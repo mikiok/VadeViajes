@@ -1,0 +1,38 @@
+
+
+<%= stylesheet_link_tag    'locations/new_location', media: 'all' %>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2 class="modal-title" id="exampleModalLabel">New location</h2>
+				</button>
+			</div>
+			<div class="modal-body">
+				<img id="loadingMap" src="/loading.gif" style="display: block;">
+			</div>
+			<div class="modal-footer">
+				<%= form_for [@trip, @location], url: {action: "add_location_to_trip"} do |f| %>
+
+					<div class="coordenates">
+						City: 
+						<%= f.text_field :name ,id: "cityName", readonly: "readonly"%><br>
+						Latitude: 
+						<%= f.number_field :latitude ,id: "latitude", readonly: "readonly", size: 10 %>
+		  			Longitude: 
+						<%= f.number_field :longitude ,id: "longitude", readonly: "readonly", size: 10 %>
+		  		</div>
+		  		Init date: 
+					<%= f.date_field :initdate ,id: "initDate", min: "#{@trip.initdate}", max: "#{@trip.enddate}", onkeydown: "return false", value: "#{@trip.initdate.year}-0#{@trip.initdate.month}-#{@trip.initdate.mday}"%>
+	  			End date: 
+					<%= f.date_field :enddate ,id: "endDate", min: "#{@trip.initdate}", max: "#{@trip.enddate}", onkeydown: "return false", value: "#{@trip.initdate.year}-0#{@trip.initdate.month}-#{@trip.initdate.mday}"%>
+	  			<%= f.submit "Add location", class: "btn btn-primary btn-footer", id: "add-location" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+<%= javascript_include_tag 'maps'%>

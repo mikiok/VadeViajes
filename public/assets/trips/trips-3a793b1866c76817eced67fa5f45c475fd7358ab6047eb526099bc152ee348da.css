@@ -1,0 +1,23 @@
+/* line 6, /home/miguel/IronHack/ProyectoFinal/IronhackProject/app/assets/stylesheets/trips/trips.scss */
+ul li {
+  list-style: none;
+}
+/* line 9, /home/miguel/IronHack/ProyectoFinal/IronhackProject/app/assets/stylesheets/trips/trips.scss */
+ul li .trip {
+  display: flex;
+}
+/* line 12, /home/miguel/IronHack/ProyectoFinal/IronhackProject/app/assets/stylesheets/trips/trips.scss */
+ul li .trip .trip-logo {
+  float: left;
+  height: 100px;
+  width: 100px;
+}
+/* line 17, /home/miguel/IronHack/ProyectoFinal/IronhackProject/app/assets/stylesheets/trips/trips.scss */
+ul li .trip .trip-info {
+  justify-content: space-around;
+  text-align: justify;
+  display: inline-block;
+  width: 70%;
+  margin-left: 15px;
+  margin-right: 60px;
+}

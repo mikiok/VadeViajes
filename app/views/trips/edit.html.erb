@@ -1,0 +1,16 @@
+<%= render 'users/navbar' %>
+<%= form_for [@current_user, @trip], url: {action: "update"} do |f| %>
+		<%= f.label :name %>
+		<%= f.text_field :name %><br />
+
+		<%= f.label :description %>
+		<%= f.text_field :description %><br />
+
+		<%= f.label :initdate %>
+		<%= f.date_field :initdate %><br />
+
+		<%= f.label :enddate %>
+		<%= f.date_field :enddate %><br />
+
+	<%= f.submit "Update" %>
+<%end%>

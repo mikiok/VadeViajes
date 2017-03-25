@@ -1,0 +1,49 @@
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4hdPUfxsrY2F-P2e3N-TaVex_t3nBJ9I&libraries=places"></script>
+<%= stylesheet_link_tag    'trips/show', media: 'all' %>
+
+<%= render 'users/navbar' %>
+
+<div class="body-content">
+	<div id="tripInformation" data-id=<%= @trip.id %>>
+		<h2> Trip: <%=@trip.name %></h2>
+
+		<!--<p>
+		  <strong>Init Date:</strong>
+		  <%= @trip.initdate %>
+		</p>
+
+		<p>
+		  <strong>End Date:</strong>
+		  <%= @trip.enddate %>
+		</p>-->
+	</div>
+
+	<div id="content">
+		<div id="mapContainer">
+			<div id="mapHeader"> 
+				<button class="button button-action button-box new-location"><i class="fa fa-plus"></i></button>
+			</div>
+			<div id="locationsMap"> </div>
+
+		</div>
+
+		<div id="chatContainer">
+			<div id="messages" data-trip-id="<%= @trip.id %>">
+			  <%= render @trip.messages %>
+			</div>
+
+			<%= form_for @message, url: '#' do |f| %>
+			  <%= hidden_field_tag 'trip_id', @trip.id %>
+			  <div class="form-group">
+			    <%= f.text_field :body, class: 'form-control', autocomplete: "false" , placeholder: "From 2 to 1000 characters" %>
+			  	<%= f.submit "Send", class: 'btn btn-primary btn-md' %>
+			  </div>
+			<% end %>
+		</div>
+	</div>
+
+	<%= render 'locations/new_location' %>
+</div>
+
+<%= javascript_include_tag 'trips/trip'%>
+<%= javascript_include_tag 'channels/rooms'%>

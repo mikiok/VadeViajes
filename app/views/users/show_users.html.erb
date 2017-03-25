@@ -1,0 +1,19 @@
+<%= render 'navbar' %>
+
+<ul>
+	<% @searchedUsers.each do |user| %>
+		<%if (user.id != @current_user.id)%>
+			<li>
+				<%= image_tag user.avatar.url(:thumb)%> 
+				<%= user.firstname %> <%= user.lastname %><br>
+				<hr>
+			</li>
+		<% end %>
+	<% end %>
+</ul>
+
+<style type="text/css">
+	ul li{
+		list-style:none;
+	}
+</style>

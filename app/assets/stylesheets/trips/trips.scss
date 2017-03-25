@@ -1,0 +1,28 @@
+// Place all the styles related to the Trips controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+ul{
+
+	li{
+  	list-style:none;
+	}
+	li .trip{
+		display: flex;
+
+		.trip-logo{
+			float: left;
+			height: 100px;
+    	width: 100px;
+		}
+		.trip-info{
+			justify-content: space-around;
+			text-align: justify;
+			display:inline-block;
+			width: 70%;
+			margin-left: 15px;
+			margin-right: 60px;
+		}
+	}
+}
+
+

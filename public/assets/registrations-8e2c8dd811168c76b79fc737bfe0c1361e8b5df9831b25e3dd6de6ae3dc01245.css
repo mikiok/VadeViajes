@@ -1,0 +1,16 @@
+/* line 1, /home/miguel/IronHack/ProyectoFinal/IronhackProject/app/assets/stylesheets/registrations.scss */
+form {
+  margin-left: 20px;
+}
+/* line 3, /home/miguel/IronHack/ProyectoFinal/IronhackProject/app/assets/stylesheets/registrations.scss */
+form img {
+  height: 210px;
+  width: 210px;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+/* line 11, /home/miguel/IronHack/ProyectoFinal/IronhackProject/app/assets/stylesheets/registrations.scss */
+form .field .btn-file {
+  width: 210px;
+}

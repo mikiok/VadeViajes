@@ -1,0 +1,63 @@
+/* line 1, /home/miguel/IronHack/ProyectoFinal/IronhackProject/app/assets/stylesheets/locations/new_location.scss */
+#map {
+  width: 100%;
+  height: 350px;
+}
+
+/* line 5, /home/miguel/IronHack/ProyectoFinal/IronhackProject/app/assets/stylesheets/locations/new_location.scss */
+.controls {
+  background-color: #fff;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  height: 29px;
+  margin-left: 17px;
+  margin-top: 10px;
+  outline: none;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 400px;
+}
+
+/* line 23, /home/miguel/IronHack/ProyectoFinal/IronhackProject/app/assets/stylesheets/locations/new_location.scss */
+.controls:focus {
+  border-color: #4d90fe;
+}
+
+/* line 27, /home/miguel/IronHack/ProyectoFinal/IronhackProject/app/assets/stylesheets/locations/new_location.scss */
+.pac-container {
+  z-index: 10000;
+}
+
+/* line 31, /home/miguel/IronHack/ProyectoFinal/IronhackProject/app/assets/stylesheets/locations/new_location.scss */
+#pac-input {
+  width: 200px;
+  left: 65% !important;
+}
+
+/* line 36, /home/miguel/IronHack/ProyectoFinal/IronhackProject/app/assets/stylesheets/locations/new_location.scss */
+.modal-body {
+  width: 100%;
+  height: 350px;
+}
+
+/* line 41, /home/miguel/IronHack/ProyectoFinal/IronhackProject/app/assets/stylesheets/locations/new_location.scss */
+.modal-dialog {
+  width: 700px;
+}
+
+/* line 45, /home/miguel/IronHack/ProyectoFinal/IronhackProject/app/assets/stylesheets/locations/new_location.scss */
+.coordenates {
+  text-align: left;
+}
+
+/* line 49, /home/miguel/IronHack/ProyectoFinal/IronhackProject/app/assets/stylesheets/locations/new_location.scss */
+#loadingMap {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}

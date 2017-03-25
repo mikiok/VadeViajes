@@ -1,0 +1,15 @@
+form{
+	margin-left: 20px;
+	img{
+		height: 210px;
+		width: 210px;
+		border-top: 1px solid black;
+		border-left: 1px solid black;
+		border-right: 1px solid black;
+	}
+	.field{
+		.btn-file{
+			width: 210px;
+		}
+	}
+}
