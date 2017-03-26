@@ -17,10 +17,40 @@
 		  <%= @trip.enddate %>
 		</p>-->
 	</div>
-
 	<div id="content">
+		<div id="users">
+			<% @trip.users.each do |user| %>
+				<div id="user">
+					<div id="userImage">
+						<a href="/users/<%= user.id %>">
+							<% if user.avatar_file_size != nil %>
+			          <%= image_tag user.avatar.url(:common), class: "avatar"%>
+			        <% else %>
+			          <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=60x60", class: "avatar"%>
+			        <% end %>
+			      </a>
+		      </div>
+		      <div id="userName">
+		      	<%= user.firstname %>
+		      	<%= user.lastname.split(" ")[0] %>
+		      </div>
+		    </div>
+      <% end %>
+      <button class="addUser">
+      	<i class="fa fa-plus"></i>
+      </button>
+		</div>
 		<div id="mapContainer">
-			<div id="mapHeader"> 
+			<div id="mapHeader">
+				<div class="dropdown">
+				  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				    Locations
+				    <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+				    <li><a href="#">Action</a></li>
+				  </ul>
+				</div>
 				<button class="button button-action button-box new-location"><i class="fa fa-plus"></i></button>
 			</div>
 			<div id="locationsMap"> </div>

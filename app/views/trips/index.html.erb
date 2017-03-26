@@ -1,24 +1,35 @@
 <%= stylesheet_link_tag    'trips/trips', media: 'all' %>
 <%= render 'users/navbar' %>
 
-<ul>
-  <% @trips.each do |trip| %>
-    <li>
-      <div class="trip">
-        <div class="trip-logo">
-          <% if trip.logo_file_name == nil %>
-            <img src="/trip-default-logo.png" class="trip-logo">
-          <% else %>
-            <%= image_tag trip.logo.url(:thumb)%> 
-          <% end %>
-        </div>
-        <div class="trip-info"> 
-          <%= link_to trip.name, trip_path(trip) %> <br>
-          Description: 
-          <%= trip.description %> 
-        </div>
-      </div>
-    </li>
-    <hr>
-  <% end %>
-</ul>
+<div class="body-content">
+
+  <div id="content">
+    <ul>
+      <% @trips.each do |trip| %>
+        <li>
+          <div class="trip">
+            <div class="trip-logo">
+              <% if trip.logo_file_name == nil %>
+                <img src="/trip-default-logo.png" class="trip-logo">
+              <% else %>
+                <%= image_tag trip.logo.url(:thumb)%> 
+              <% end %>
+            </div>
+            <div class="trip-info">
+              <%= link_to trip.name, trip_path(trip) %> <br>
+              <% trip.users.each do |user| %>
+                <% if user.avatar_file_size != nil %>
+                  <%= image_tag user.avatar.url(:common), class: "avatar"%>
+                <% else %>
+                  <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=30x30", class: "avatar"%>
+                <% end %>
+              <% end %> <br>
+              Description: 
+              <%= trip.description %> 
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

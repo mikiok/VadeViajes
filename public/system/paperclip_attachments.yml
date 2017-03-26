@@ -1,0 +1,14 @@
+---
+:User:
+  :avatar:
+  - :big
+  - :common
+  - :medium
+  - :small
+  - :thumb
+:Trip:
+  :logo:
+  - :big
+  - :medium
+  - :small
+  - :thumb
