@@ -44,11 +44,22 @@
 			<div id="mapHeader">
 				<div class="dropdown">
 				  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				    Locations
+				  	<div class="tittle">
+						  	<img src="/googleMarker.png" class="default-marker">
+						    Locations( <%= @trip.initdate.strftime('%d-%m-%Y') %> - <%= @trip.enddate.strftime('%d-%m-%Y') %> )
+					  </div>
 				    <span class="caret"></span>
 				  </button>
 				  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-				    <li><a href="#">Action</a></li>
+				  	<% order = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %>
+				  	<% @locations.each_with_index do |location, index| %>
+					    <li>
+					    	<button href="#">
+					    		<img src="/mapMarkers/<%= order[index] %>.png" class="location-marker">
+							    <%= location.name %>( <%= location.initdate.strftime('%d-%m-%Y') %> - <%= location.enddate.strftime('%d-%m-%Y') %> )
+					    	</button>
+					   	</li>
+					  <% end %>
 				  </ul>
 				</div>
 				<button class="button button-action button-box new-location"><i class="fa fa-plus"></i></button>

@@ -77,7 +77,7 @@ function initMap() {
 				geocoder.geocode({'location': latlng}, function(results, status) {
 					if (status === 'OK') {
 						if (results[1]) {
-							document.getElementById("cityName").value = results[1].address_components[1].long_name;
+							document.getElementById("cityName").value = results[1].address_components[2].long_name;
 						}
 					}
 				});

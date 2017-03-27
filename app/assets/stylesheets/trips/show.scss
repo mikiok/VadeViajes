@@ -12,7 +12,7 @@
   max-width: 1500px;
   background-color: #eff0f2;
   border-radius: 20px;
-  padding: 20px;
+  padding: 15px;
 
   #users{
     display: flex;
@@ -65,13 +65,44 @@
       }
       .dropdown{
         .dropdown-toggle{
-          background-color: blue;
+          background-color: #153568;
           color: white;
-          border: 1px solid white;
+          border: 1px solid #061328;
+          font-weight: 100;
           border-radius: 0px;
           height: 100%;
-          width: 200px;
+          width: 350px;
           text-align: left;
+          font-size: 16px;
+          padding: 0px;
+          display: flex;
+          align-items: center;
+          .tittle{
+            width: 330px;
+            height: 40px;
+            .default-marker{
+              height: 100%;
+            }
+          }
+        }
+        .dropdown-menu{
+          margin: 0px;
+          border-radius: 0px;
+          width: 350px;
+          padding: 0px;
+          li{
+            height: 40px;
+            display: flex;
+            button{
+              width: 315px;
+              height: 100%;
+              padding: 0px 0px 0px 9px;
+              text-align: left;
+              background-color: #153568;
+              border: 0px;
+              color: white;
+            }
+          }
         }
       }
     }
