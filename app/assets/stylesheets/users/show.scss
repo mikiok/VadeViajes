@@ -1,0 +1,31 @@
+.body-content{
+  padding: 5px;  
+}
+#content{
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  max-width: 1500px;
+  background-color: #eff0f2;
+  border-radius: 20px;
+  padding: 15px;
+
+  #user{
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 250px;
+    width: 100%;
+    margin: 20px 20px 30px 30px;
+    #info{
+      margin-left: 20px;
+    }
+    #userName{
+      font-size: 35px;
+    }
+    #trips{
+      
+    }
+  }
+}

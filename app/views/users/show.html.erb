@@ -1,0 +1,36 @@
+<%= stylesheet_link_tag    'users/show', media: 'all' %>
+
+<%= render 'navbar' %>
+
+<% if @user != nil %>
+	<div class="body-content">
+		<div id="content">
+			<div id="user">
+				<div id="userImage">
+					<% if @user.avatar_file_size != nil %>
+	          <%= image_tag @user.avatar.url(:profile), class: "avatar"%>
+	        <% else %>
+	          <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=250x250", class: "avatar"%>
+	        <% end %>
+	      </div>
+	      <div id="info">
+		      <div id="userName">
+		      	<%= @user.firstname %>
+		      	<br>
+		      	<%= @user.lastname %>
+		      	<br>
+		      </div>
+		      <div id="trips">
+		      	<% if @user.trips.count()==1 %>
+		      		<%= @user.trips.count() %> trip done
+		      	<% else %>
+		      		<%= @user.trips.count() %> trips done
+		      	<% end %>
+		      </div>
+		     </div>
+			</div>
+		</div>
+	</div>
+<% else %>
+	<%= render :file => 'public/404.html' %>
+<% end %>
