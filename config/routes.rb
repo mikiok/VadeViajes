@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :trips
   get '/users/:id', to: 'users#show'
+  post '/user/upload', to: 'users#upload_avatar'
   post '/trips/:id', to: 'trips#add_location_to_trip'
+  delete '/trips/:id/location/destroy', to: 'locations#destroy', as: 'location'
   mount ActionCable.server => '/cable'
   #get 'users/:id', to: 'users#show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

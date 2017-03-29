@@ -12,5 +12,7 @@ class LocationsController < ApplicationController
 	end
 
 	def destroy
+		Location.find_by(id: params[:id]).destroy
+		redirect_to "/trips/#{params[:format]}"
 	end
 end

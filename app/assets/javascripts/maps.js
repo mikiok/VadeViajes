@@ -131,7 +131,7 @@ function initLocationsMap() {
 			var labelIndex = 0;
 
 			var locationsMap = new google.maps.Map(document.getElementById('locationsMap'), {
-				zoom: 8,
+				zoom: 4,
 				minZoom: 2,
 				maxZoom: 8,
 				center: {lat: 39.019184, lng: -2.812500},

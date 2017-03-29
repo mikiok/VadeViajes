@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	before_filter :authenticate_user!, except: [:index]
+	skip_before_filter :verify_authenticity_token
 
 	def index
 		if user_signed_in?
@@ -23,6 +24,12 @@ class UsersController < ApplicationController
 		  format.json { render :json => @users }
 		end
 		@searchedUsers = User.where("CONCAT_WS(' ', lower(firstname), lower(lastname)) like ?", "%#{params[:name]}%".downcase)
+	end
+
+	def upload_avatar
+		if @current_user.update_attribute(:avatar, params[:user][:avatar])
+			redirect_to "users/#{@current_user.id}"
+		end
 	end
 
 end

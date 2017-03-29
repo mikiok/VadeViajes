@@ -28,7 +28,7 @@ class TripsController < ApplicationController
 		end
 		trip
 		@message = Message.new
-		@locations = @trip.locations
+		@locations = @trip.locations.order('initdate ASC')
 		@location = trip.locations.new
 		respond_to do |format|
 			format.html
@@ -46,7 +46,6 @@ class TripsController < ApplicationController
 	end
 
 	def destroy
-		locations.destroy
 		trip.destroy
 		redirect_to "/trips"
 	end

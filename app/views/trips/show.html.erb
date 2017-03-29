@@ -59,9 +59,7 @@
 						    		<img src="/mapMarkers/<%= order[index] %>.png" class="location-marker">
 								    <%= location.name %>( <%= location.initdate.strftime('%d-%m-%Y') %> - <%= location.enddate.strftime('%d-%m-%Y') %> )
 						    	</button>
-						    	<button class="removeLocation">
-						    		x
-						    	</button>
+						    	<%= button_to('x', location_path(location, @trip), method: 'delete', data: {confirm: 'Are you sure?'}, class: 'removeLocation') %>
 						   	</li>
 						  <% end %>
 					  </ul>

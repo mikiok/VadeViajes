@@ -8,9 +8,14 @@
 			<div id="user">
 				<div id="userImage">
 					<% if @user.avatar_file_size != nil %>
-	          <%= image_tag @user.avatar.url(:profile), class: "avatar"%>
+	          <%= image_tag @user.avatar.url(:profile), class: "avatar", id: "avatar" %>
 	        <% else %>
-	          <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=250x250", class: "avatar"%>
+	          <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=250x250", class: "avatar", id: "avatar" %>
+	        <% end %>
+	        <% if @current_user == @user %>
+	        	<form class="myForm" id="myForm" enctype="multipart/form-data" action="/user/upload" accept-charset="UTF-8" method="post">
+						   <input id="upload-avatar" class="btn btn-default btn-file" type="file" name="user[avatar]">
+						</form>
 	        <% end %>
 	      </div>
 	      <div id="info">
@@ -34,3 +39,5 @@
 <% else %>
 	<%= render :file => 'public/404.html' %>
 <% end %>
+
+<%= javascript_include_tag 'users/show'%>

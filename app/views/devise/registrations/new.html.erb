@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag    'registrations', media: 'all' %>
+
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -42,5 +44,4 @@
 	</div>
 <% end %>
 
-<%= javascript_include_tag 'registrations'%>
-<%= stylesheet_link_tag    'registrations', media: 'all' %>
+<%= javascript_include_tag 'registrations/registrations'%>
