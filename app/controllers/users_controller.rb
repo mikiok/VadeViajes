@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
 	def upload_avatar
 		if @current_user.update_attribute(:avatar, params[:user][:avatar])
-			redirect_to "users/#{@current_user.id}"
+			redirect_to "/users/#{@current_user.id}"
 		end
 	end
 

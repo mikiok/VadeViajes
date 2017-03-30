@@ -42324,3 +42324,1318 @@ Processing by UsersController#show_users as JSON
 Completed 200 OK in 5ms (Views: 1.0ms | ActiveRecord: 1.1ms)
 
 
+Started GET "/" for ::1 at 2017-03-30 07:11:29 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (42.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from <class:UsersController> at /Users/Miguel/VadeViajes/app/controllers/users_controller.rb:2)
+DEPRECATION WARNING: skip_before_filter is deprecated and will be removed in Rails 5.1. Use skip_before_action instead. (called from <class:UsersController> at /Users/Miguel/VadeViajes/app/controllers/users_controller.rb:3)
+Processing by UsersController#index as HTML
+  Rendering static_pages/landing.html.erb within layouts/application
+  Rendered static_pages/landing.html.erb within layouts/application (1154.2ms)
+Completed 200 OK in 1812ms (Views: 1684.8ms | ActiveRecord: 100.5ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2017-03-30 07:11:48 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bG6YwMN10VGOho9C98hR8NHaTA1DJFdN9BGTx409No9T4cxh5KO9Mu8gLDSQ/1EjGDm6Fz+M2KUEY6WjTSPvcw==", "user"=>{"email"=>"msanchezbrunetealvarez@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (72.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "msanchezbrunetealvarez@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (13.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", 2017-03-30 07:11:48 UTC], ["last_sign_in_at", 2017-03-29 07:32:24 UTC], ["sign_in_count", 9], ["updated_at", 2017-03-30 07:11:48 UTC], ["id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 283ms (ActiveRecord: 87.5ms)
+
+
+Started GET "/" for ::1 at 2017-03-30 07:11:48 +0000
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (112.1ms)
+  Rendered users/index.html.erb within layouts/application (127.7ms)
+Completed 200 OK in 425ms (Views: 422.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/trips" for ::1 at 2017-03-30 07:11:58 +0000
+Processing by TripsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering trips/index.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (11.2ms)
+  [1m[36mTrip Load (58.8ms)[0m  [1m[34mSELECT "trips".* FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 4]]
+  Rendered trips/index.html.erb within layouts/application (130.9ms)
+Completed 200 OK in 529ms (Views: 368.2ms | ActiveRecord: 66.3ms)
+
+
+Started GET "/trips/3" for ::1 at 2017-03-30 07:12:10 +0000
+Processing by TripsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (16.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (26.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  Rendering trips/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (46.4ms)
+  [1m[36mTrip Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1 AND "trips"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mLocation Load (13.3ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [1 times] (5.9ms)
+  Rendered locations/_new_location.html.erb (81.0ms)
+  Rendered trips/show.html.erb within layouts/application (267.4ms)
+Completed 200 OK in 868ms (Views: 716.1ms | ActiveRecord: 65.0ms)
+
+
+Started GET "/cable" for ::1 at 2017-03-30 07:12:13 +0000
+Started GET "/trips/3.json" for ::1 at 2017-03-30 07:12:13 +0000
+Processing by TripsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.8ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mLocation Load (1.1ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+Completed 200 OK in 23ms (Views: 3.4ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/cable/" [WebSocket] for ::1 at 2017-03-30 07:12:13 +0000
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Registered connection (Z2lkOi8vaXJvbmhhY2stcHJvamVjdC9Vc2VyLzE)
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is transmitting the subscription confirmation
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is streaming from trips_3_channel
+Started GET "/users.json" for ::1 at 2017-03-30 07:12:31 +0000
+Processing by UsersController#show_users as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 5ms (Views: 0.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/1" for ::1 at 2017-03-30 07:12:36 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (15.0ms)
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered users/show.html.erb within layouts/application (77.7ms)
+Completed 200 OK in 424ms (Views: 418.4ms | ActiveRecord: 2.2ms)
+
+
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Finished "/cable/" [WebSocket] for ::1 at 2017-03-30 07:12:37 +0000
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel stopped streaming from trips_3_channel
+Started POST "/user/upload" for ::1 at 2017-03-30 07:12:47 +0000
+Processing by UsersController#upload_avatar as HTML
+  Parameters: {"user"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x007f8d60223888 @tempfile=#<Tempfile:/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/RackMultipart20170330-631-d71vrs.png>, @original_filename="brand.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"brand.png\"\r\nContent-Type: image/png\r\n">}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Command :: file -b --mime '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-1d2s3c5.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-it8bqd.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-it8bqd.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-it8bqd.png[0]' -auto-orient -resize "300x300>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/c1cbc0300a485d1db23831e58de99e5f20170330-631-xjib62'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-it8bqd.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-it8bqd.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-it8bqd.png[0]' -auto-orient -resize "40x40>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/c1cbc0300a485d1db23831e58de99e5f20170330-631-19icssk'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-it8bqd.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-it8bqd.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-it8bqd.png[0]' -auto-orient -resize "60x60" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/c1cbc0300a485d1db23831e58de99e5f20170330-631-m0xgaz'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-it8bqd.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-it8bqd.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-it8bqd.png[0]' -auto-orient -resize "100x100>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/c1cbc0300a485d1db23831e58de99e5f20170330-631-1qxj1dq'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-it8bqd.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-it8bqd.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-it8bqd.png[0]' -auto-orient -resize "500x500>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/c1cbc0300a485d1db23831e58de99e5f20170330-631-grdbos'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-it8bqd.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-it8bqd.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-it8bqd.png[0]' -auto-orient -resize "250x250>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/c1cbc0300a485d1db23831e58de99e5f20170330-631-qhy8ft'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "avatar_file_name" = $1, "avatar_content_type" = $2, "avatar_file_size" = $3, "avatar_updated_at" = $4, "updated_at" = $5 WHERE "users"."id" = $6[0m  [["avatar_file_name", "brand.png"], ["avatar_content_type", "image/png"], ["avatar_file_size", 74547], ["avatar_updated_at", 2017-03-30 07:12:47 UTC], ["updated_at", 2017-03-30 07:12:49 UTC], ["id", 1]]
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/original/img-avatar.jpg
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/medium/img-avatar.jpg
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/small/img-avatar.jpg
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/common/img-avatar.jpg
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/thumb/img-avatar.jpg
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/big/img-avatar.jpg
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/profile/img-avatar.jpg
+  [1m[35m (16.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000users/1
+Completed 302 Found in 13291ms (ActiveRecord: 17.8ms)
+
+
+Started GET "/users/1" for ::1 at 2017-03-30 07:13:25 +0000
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from <class:UsersController> at /Users/Miguel/VadeViajes/app/controllers/users_controller.rb:2)
+DEPRECATION WARNING: skip_before_filter is deprecated and will be removed in Rails 5.1. Use skip_before_action instead. (called from <class:UsersController> at /Users/Miguel/VadeViajes/app/controllers/users_controller.rb:3)
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (12.5ms)
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered users/show.html.erb within layouts/application (55.3ms)
+Completed 200 OK in 432ms (Views: 405.1ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/user/upload" for ::1 at 2017-03-30 07:13:30 +0000
+Processing by UsersController#upload_avatar as HTML
+  Parameters: {"user"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x007f8d5aef78a8 @tempfile=#<Tempfile:/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/RackMultipart20170330-631-1ahulvi.png>, @original_filename="googleMarker.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"googleMarker.png\"\r\nContent-Type: image/png\r\n">}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Command :: file -b --mime '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-arovlo.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-8s2ob2.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-8s2ob2.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-8s2ob2.png[0]' -auto-orient -resize "300x300>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/34b1a526b1b03b1a5f27dab4a81c765d20170330-631-onh29v'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-8s2ob2.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-8s2ob2.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-8s2ob2.png[0]' -auto-orient -resize "40x40>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/34b1a526b1b03b1a5f27dab4a81c765d20170330-631-yis3uu'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-8s2ob2.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-8s2ob2.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-8s2ob2.png[0]' -auto-orient -resize "60x60" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/34b1a526b1b03b1a5f27dab4a81c765d20170330-631-rdmqjn'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-8s2ob2.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-8s2ob2.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-8s2ob2.png[0]' -auto-orient -resize "100x100>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/34b1a526b1b03b1a5f27dab4a81c765d20170330-631-kjflid'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-8s2ob2.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-8s2ob2.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-8s2ob2.png[0]' -auto-orient -resize "500x500>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/34b1a526b1b03b1a5f27dab4a81c765d20170330-631-l4elry'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-8s2ob2.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-8s2ob2.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-8s2ob2.png[0]' -auto-orient -resize "250x250>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/34b1a526b1b03b1a5f27dab4a81c765d20170330-631-1ftsoc1'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "users" SET "avatar_file_name" = $1, "avatar_file_size" = $2, "avatar_updated_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["avatar_file_name", "googleMarker.png"], ["avatar_file_size", 85309], ["avatar_updated_at", 2017-03-30 07:13:30 UTC], ["updated_at", 2017-03-30 07:13:36 UTC], ["id", 1]]
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/original/brand.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/medium/brand.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/small/brand.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/common/brand.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/thumb/brand.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/big/brand.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/profile/brand.png
+  [1m[35m (15.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 8880ms (ActiveRecord: 17.4ms)
+
+
+Started GET "/users/1" for ::1 at 2017-03-30 07:13:39 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (14.5ms)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered users/show.html.erb within layouts/application (27.1ms)
+Completed 200 OK in 379ms (Views: 373.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/1" for ::1 at 2017-03-30 07:13:59 +0000
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from <class:UsersController> at /Users/Miguel/VadeViajes/app/controllers/users_controller.rb:2)
+DEPRECATION WARNING: skip_before_filter is deprecated and will be removed in Rails 5.1. Use skip_before_action instead. (called from <class:UsersController> at /Users/Miguel/VadeViajes/app/controllers/users_controller.rb:3)
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (13.3ms)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered users/show.html.erb within layouts/application (40.4ms)
+Completed 200 OK in 370ms (Views: 342.4ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/user/upload" for ::1 at 2017-03-30 07:14:14 +0000
+Processing by UsersController#upload_avatar as HTML
+  Parameters: {"user"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x007f8d5ba7f748 @tempfile=#<Tempfile:/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/RackMultipart20170330-631-1epa9c9.png>, @original_filename="brand.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"brand.png\"\r\nContent-Type: image/png\r\n">}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Command :: file -b --mime '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-57xkk4.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-12dlo6e.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-12dlo6e.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-12dlo6e.png[0]' -auto-orient -resize "300x300>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/9f430ce92f444876dcc954188b753c6a20170330-631-o1malw'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-12dlo6e.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-12dlo6e.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-12dlo6e.png[0]' -auto-orient -resize "40x40>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/9f430ce92f444876dcc954188b753c6a20170330-631-10mbsq8'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-12dlo6e.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-12dlo6e.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-12dlo6e.png[0]' -auto-orient -resize "60x60" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/9f430ce92f444876dcc954188b753c6a20170330-631-1jt2mo6'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-12dlo6e.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-12dlo6e.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-12dlo6e.png[0]' -auto-orient -resize "100x100>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/9f430ce92f444876dcc954188b753c6a20170330-631-48c4d0'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-12dlo6e.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-12dlo6e.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-12dlo6e.png[0]' -auto-orient -resize "500x500>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/9f430ce92f444876dcc954188b753c6a20170330-631-8y6i0h'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-12dlo6e.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-12dlo6e.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-12dlo6e.png[0]' -auto-orient -resize "250x250>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/9f430ce92f444876dcc954188b753c6a20170330-631-5yq5dq'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "avatar_file_name" = $1, "avatar_file_size" = $2, "avatar_updated_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["avatar_file_name", "brand.png"], ["avatar_file_size", 74547], ["avatar_updated_at", 2017-03-30 07:14:14 UTC], ["updated_at", 2017-03-30 07:14:15 UTC], ["id", 1]]
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/original/googleMarker.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/medium/googleMarker.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/small/googleMarker.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/common/googleMarker.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/thumb/googleMarker.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/big/googleMarker.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/profile/googleMarker.png
+  [1m[35m (15.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 1350ms (ActiveRecord: 17.4ms)
+
+
+Started GET "/users/1" for ::1 at 2017-03-30 07:14:15 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (18.6ms)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered users/show.html.erb within layouts/application (35.7ms)
+Completed 200 OK in 433ms (Views: 428.8ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/user/upload" for ::1 at 2017-03-30 07:14:25 +0000
+Processing by UsersController#upload_avatar as HTML
+  Parameters: {"user"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x007f8d63242028 @tempfile=#<Tempfile:/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/RackMultipart20170330-631-maby5a.jpg>, @original_filename="background.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"background.jpg\"\r\nContent-Type: image/jpeg\r\n">}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Command :: file -b --mime '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/d229bbf31eaeebc7c88897732d8b932d20170330-631-19ors7g.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/d229bbf31eaeebc7c88897732d8b932d20170330-631-14548ia.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/d229bbf31eaeebc7c88897732d8b932d20170330-631-14548ia.jpg[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/d229bbf31eaeebc7c88897732d8b932d20170330-631-14548ia.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/0903a3d2a9a5ac73ad3445fff2421d8420170330-631-q68a9o'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/d229bbf31eaeebc7c88897732d8b932d20170330-631-14548ia.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/d229bbf31eaeebc7c88897732d8b932d20170330-631-14548ia.jpg[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/d229bbf31eaeebc7c88897732d8b932d20170330-631-14548ia.jpg[0]' -auto-orient -resize "40x40>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/0903a3d2a9a5ac73ad3445fff2421d8420170330-631-7z8cf9'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/d229bbf31eaeebc7c88897732d8b932d20170330-631-14548ia.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/d229bbf31eaeebc7c88897732d8b932d20170330-631-14548ia.jpg[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/d229bbf31eaeebc7c88897732d8b932d20170330-631-14548ia.jpg[0]' -auto-orient -resize "60x60" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/0903a3d2a9a5ac73ad3445fff2421d8420170330-631-19yi7sr'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/d229bbf31eaeebc7c88897732d8b932d20170330-631-14548ia.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/d229bbf31eaeebc7c88897732d8b932d20170330-631-14548ia.jpg[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/d229bbf31eaeebc7c88897732d8b932d20170330-631-14548ia.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/0903a3d2a9a5ac73ad3445fff2421d8420170330-631-swfw8a'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/d229bbf31eaeebc7c88897732d8b932d20170330-631-14548ia.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/d229bbf31eaeebc7c88897732d8b932d20170330-631-14548ia.jpg[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/d229bbf31eaeebc7c88897732d8b932d20170330-631-14548ia.jpg[0]' -auto-orient -resize "500x500>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/0903a3d2a9a5ac73ad3445fff2421d8420170330-631-601ysq'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/d229bbf31eaeebc7c88897732d8b932d20170330-631-14548ia.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/d229bbf31eaeebc7c88897732d8b932d20170330-631-14548ia.jpg[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/d229bbf31eaeebc7c88897732d8b932d20170330-631-14548ia.jpg[0]' -auto-orient -resize "250x250>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/0903a3d2a9a5ac73ad3445fff2421d8420170330-631-1qvhnp4'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "avatar_file_name" = $1, "avatar_content_type" = $2, "avatar_file_size" = $3, "avatar_updated_at" = $4, "updated_at" = $5 WHERE "users"."id" = $6[0m  [["avatar_file_name", "background.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 8835036], ["avatar_updated_at", 2017-03-30 07:14:25 UTC], ["updated_at", 2017-03-30 07:14:42 UTC], ["id", 1]]
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/original/brand.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/medium/brand.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/small/brand.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/common/brand.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/thumb/brand.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/big/brand.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/profile/brand.png
+  [1m[35m (15.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 17776ms (ActiveRecord: 17.4ms)
+
+
+Started GET "/users/1" for ::1 at 2017-03-30 07:14:42 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (16.3ms)
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered users/show.html.erb within layouts/application (35.3ms)
+Completed 200 OK in 389ms (Views: 383.3ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/user/upload" for ::1 at 2017-03-30 07:15:07 +0000
+Processing by UsersController#upload_avatar as HTML
+  Parameters: {"user"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x007f8d604fb5b0 @tempfile=#<Tempfile:/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/RackMultipart20170330-631-1jtnmaz.png>, @original_filename="googleMarker.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"googleMarker.png\"\r\nContent-Type: image/png\r\n">}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Command :: file -b --mime '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-esjsrn.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-sqsrzq.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-sqsrzq.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-sqsrzq.png[0]' -auto-orient -resize "300x300>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a2ad3b877e8ea066dc9ac471d75c852620170330-631-103tm97'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-sqsrzq.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-sqsrzq.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-sqsrzq.png[0]' -auto-orient -resize "40x40>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a2ad3b877e8ea066dc9ac471d75c852620170330-631-1byu0pz'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-sqsrzq.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-sqsrzq.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-sqsrzq.png[0]' -auto-orient -resize "60x60" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a2ad3b877e8ea066dc9ac471d75c852620170330-631-7xqhpd'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-sqsrzq.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-sqsrzq.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-sqsrzq.png[0]' -auto-orient -resize "100x100>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a2ad3b877e8ea066dc9ac471d75c852620170330-631-1heukwq'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-sqsrzq.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-sqsrzq.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-sqsrzq.png[0]' -auto-orient -resize "500x500>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a2ad3b877e8ea066dc9ac471d75c852620170330-631-7khn79'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-sqsrzq.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-sqsrzq.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8fac5e1452c9ae147deca7455923e9f220170330-631-sqsrzq.png[0]' -auto-orient -resize "250x250>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a2ad3b877e8ea066dc9ac471d75c852620170330-631-y1rdzb'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "avatar_file_name" = $1, "avatar_content_type" = $2, "avatar_file_size" = $3, "avatar_updated_at" = $4, "updated_at" = $5 WHERE "users"."id" = $6[0m  [["avatar_file_name", "googleMarker.png"], ["avatar_content_type", "image/png"], ["avatar_file_size", 85309], ["avatar_updated_at", 2017-03-30 07:15:07 UTC], ["updated_at", 2017-03-30 07:15:12 UTC], ["id", 1]]
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/original/background.jpg
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/medium/background.jpg
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/small/background.jpg
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/common/background.jpg
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/thumb/background.jpg
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/big/background.jpg
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/profile/background.jpg
+  [1m[35m (15.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 5702ms (ActiveRecord: 17.3ms)
+
+
+Started GET "/users/1" for ::1 at 2017-03-30 07:15:12 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (13.9ms)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered users/show.html.erb within layouts/application (26.3ms)
+Completed 200 OK in 436ms (Views: 431.8ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/user/upload" for ::1 at 2017-03-30 07:16:03 +0000
+Processing by UsersController#upload_avatar as HTML
+  Parameters: {"user"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x007f8d64a0ae30 @tempfile=#<Tempfile:/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/RackMultipart20170330-631-tkpc1p.png>, @original_filename="brand.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"brand.png\"\r\nContent-Type: image/png\r\n">}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Command :: file -b --mime '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-19kn8ji.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-alqrqg.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-alqrqg.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-alqrqg.png[0]' -auto-orient -resize "300x300>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/bdb58c6e6f5ab71820c5d22e3cbcba7220170330-631-k3kzny'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-alqrqg.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-alqrqg.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-alqrqg.png[0]' -auto-orient -resize "40x40>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/bdb58c6e6f5ab71820c5d22e3cbcba7220170330-631-bsb9jq'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-alqrqg.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-alqrqg.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-alqrqg.png[0]' -auto-orient -resize "60x60" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/bdb58c6e6f5ab71820c5d22e3cbcba7220170330-631-1sjzdj8'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-alqrqg.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-alqrqg.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-alqrqg.png[0]' -auto-orient -resize "100x100>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/bdb58c6e6f5ab71820c5d22e3cbcba7220170330-631-nptem5'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-alqrqg.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-alqrqg.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-alqrqg.png[0]' -auto-orient -resize "500x500>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/bdb58c6e6f5ab71820c5d22e3cbcba7220170330-631-jcjl17'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-alqrqg.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-alqrqg.png[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/8c4d3a946a1fcde2ded7e17651fd0ed720170330-631-alqrqg.png[0]' -auto-orient -resize "250x250>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/bdb58c6e6f5ab71820c5d22e3cbcba7220170330-631-1e6ldl4'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "users" SET "avatar_file_name" = $1, "avatar_file_size" = $2, "avatar_updated_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["avatar_file_name", "brand.png"], ["avatar_file_size", 74547], ["avatar_updated_at", 2017-03-30 07:16:03 UTC], ["updated_at", 2017-03-30 07:16:05 UTC], ["id", 1]]
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/original/googleMarker.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/medium/googleMarker.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/small/googleMarker.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/common/googleMarker.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/thumb/googleMarker.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/big/googleMarker.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/profile/googleMarker.png
+  [1m[35m (16.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 1422ms (ActiveRecord: 17.8ms)
+
+
+Started GET "/users/1" for ::1 at 2017-03-30 07:16:05 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (16.7ms)
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered users/show.html.erb within layouts/application (33.8ms)
+Completed 200 OK in 426ms (Views: 421.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/trips" for ::1 at 2017-03-30 07:16:08 +0000
+Processing by TripsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering trips/index.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (13.9ms)
+  [1m[36mTrip Load (0.7ms)[0m  [1m[34mSELECT "trips".* FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 4]]
+  Rendered trips/index.html.erb within layouts/application (44.3ms)
+Completed 200 OK in 397ms (Views: 381.1ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/trips" for ::1 at 2017-03-30 07:17:40 +0000
+Processing by TripsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering trips/index.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (13.1ms)
+  [1m[36mTrip Load (0.6ms)[0m  [1m[34mSELECT "trips".* FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 4]]
+  Rendered trips/index.html.erb within layouts/application (68.6ms)
+Completed 200 OK in 381ms (Views: 373.5ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/trips" for ::1 at 2017-03-30 07:17:59 +0000
+Processing by TripsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering trips/index.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (10.5ms)
+  [1m[36mTrip Load (0.7ms)[0m  [1m[34mSELECT "trips".* FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 4]]
+  Rendered trips/index.html.erb within layouts/application (40.6ms)
+Completed 200 OK in 347ms (Views: 340.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/trips" for ::1 at 2017-03-30 07:18:01 +0000
+Processing by TripsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering trips/index.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (11.0ms)
+  [1m[36mTrip Load (0.7ms)[0m  [1m[34mSELECT "trips".* FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 4]]
+  Rendered trips/index.html.erb within layouts/application (24.4ms)
+Completed 200 OK in 330ms (Views: 323.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/trips" for ::1 at 2017-03-30 07:18:09 +0000
+Processing by TripsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering trips/index.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (12.4ms)
+  [1m[36mTrip Load (0.7ms)[0m  [1m[34mSELECT "trips".* FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 4]]
+  Rendered trips/index.html.erb within layouts/application (26.5ms)
+Completed 200 OK in 333ms (Views: 325.6ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/trips" for ::1 at 2017-03-30 07:18:51 +0000
+Processing by TripsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering trips/index.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (12.7ms)
+  [1m[36mTrip Load (0.7ms)[0m  [1m[34mSELECT "trips".* FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 4]]
+  Rendered trips/index.html.erb within layouts/application (45.8ms)
+Completed 200 OK in 338ms (Views: 331.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/trips" for ::1 at 2017-03-30 07:19:05 +0000
+Processing by TripsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering trips/index.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (23.9ms)
+  [1m[36mTrip Load (0.7ms)[0m  [1m[34mSELECT "trips".* FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 4]]
+  Rendered trips/index.html.erb within layouts/application (35.3ms)
+Completed 200 OK in 340ms (Views: 333.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/trips/3" for ::1 at 2017-03-30 07:19:07 +0000
+Processing by TripsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.3ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  Rendering trips/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (9.7ms)
+  [1m[36mTrip Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1 AND "trips"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mLocation Load (0.6ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [1 times] (4.9ms)
+  Rendered locations/_new_location.html.erb (7.5ms)
+  Rendered trips/show.html.erb within layouts/application (68.4ms)
+Completed 200 OK in 481ms (Views: 384.7ms | ActiveRecord: 10.8ms)
+
+
+Started GET "/trips/3.json" for ::1 at 2017-03-30 07:19:07 +0000
+Processing by TripsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.8ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Started GET "/cable" for ::1 at 2017-03-30 07:19:07 +0000
+  [1m[36mMessage Load (1.9ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mLocation Load (0.8ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+Completed 200 OK in 33ms (Views: 4.0ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/cable/" [WebSocket] for ::1 at 2017-03-30 07:19:07 +0000
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Registered connection (Z2lkOi8vaXJvbmhhY2stcHJvamVjdC9Vc2VyLzE)
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is transmitting the subscription confirmation
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is streaming from trips_3_channel
+Started GET "/trips/3" for ::1 at 2017-03-30 07:20:06 +0000
+Processing by TripsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.3ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  Rendering trips/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (13.1ms)
+  [1m[36mTrip Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1 AND "trips"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mLocation Load (0.8ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [1 times] (3.3ms)
+  Rendered locations/_new_location.html.erb (6.6ms)
+  Rendered trips/show.html.erb within layouts/application (554.0ms)
+Completed 200 OK in 866ms (Views: 851.7ms | ActiveRecord: 4.3ms)
+
+
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Finished "/cable/" [WebSocket] for ::1 at 2017-03-30 07:20:07 +0000
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel stopped streaming from trips_3_channel
+Started GET "/trips/3.json" for ::1 at 2017-03-30 07:20:07 +0000
+Processing by TripsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.7ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Started GET "/cable" for ::1 at 2017-03-30 07:20:07 +0000
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+Started GET "/cable/" [WebSocket] for ::1 at 2017-03-30 07:20:07 +0000
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mLocation Load (4.7ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+Completed 200 OK in 33ms (Views: 4.8ms | ActiveRecord: 6.9ms)
+
+
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Registered connection (Z2lkOi8vaXJvbmhhY2stcHJvamVjdC9Vc2VyLzE)
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is transmitting the subscription confirmation
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is streaming from trips_3_channel
+Started GET "/trips/3" for ::1 at 2017-03-30 07:23:00 +0000
+Processing by TripsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (1.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  Rendering trips/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (12.3ms)
+  [1m[36mTrip Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1 AND "trips"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mLocation Load (0.8ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [1 times] (3.6ms)
+  Rendered locations/_new_location.html.erb (6.6ms)
+  Rendered trips/show.html.erb within layouts/application (484.4ms)
+Completed 200 OK in 801ms (Views: 778.9ms | ActiveRecord: 5.0ms)
+
+
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Finished "/cable/" [WebSocket] for ::1 at 2017-03-30 07:23:01 +0000
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel stopped streaming from trips_3_channel
+Started GET "/trips/3.json" for ::1 at 2017-03-30 07:23:02 +0000
+Processing by TripsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (1.1ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (1.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mLocation Load (20.9ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+Completed 200 OK in 58ms (Views: 11.5ms | ActiveRecord: 25.3ms)
+
+
+Started GET "/cable" for ::1 at 2017-03-30 07:23:02 +0000
+Started GET "/cable/" [WebSocket] for ::1 at 2017-03-30 07:23:02 +0000
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Registered connection (Z2lkOi8vaXJvbmhhY2stcHJvamVjdC9Vc2VyLzE)
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is transmitting the subscription confirmation
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is streaming from trips_3_channel
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel#send_message({"message"=>"Hola", "trip_id"=>3})
+[ActionCable] [msanchezbrunetealvarez@gmail.com]   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+[ActionCable] [msanchezbrunetealvarez@gmail.com]   [1m[36mTrip Load (0.5ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com]   [1m[35mSQL (70.7ms)[0m  [1m[32mINSERT INTO "messages" ("body", "user_id", "trip_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Hola"], ["user_id", 1], ["trip_id", 3], ["created_at", 2017-03-30 07:24:42 UTC], ["updated_at", 2017-03-30 07:24:42 UTC]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com]   [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+[ActionCable] [msanchezbrunetealvarez@gmail.com] [ActiveJob] Enqueued MessageBroadcastJob (Job ID: 20adf447-091f-4884-8981-59bd00efbd0f) to Async(default) with arguments: #<GlobalID:0x007f8d63877e48 @uri=#<URI::GID gid://ironhack-project/Message/22>>
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [20adf447-091f-4884-8981-59bd00efbd0f] Performing MessageBroadcastJob from Async(default) with arguments: #<GlobalID:0x007f8d635e2048 @uri=#<URI::GID gid://ironhack-project/Message/22>>
+[ActiveJob] [MessageBroadcastJob] [20adf447-091f-4884-8981-59bd00efbd0f]   [1m[36mTrip Load (0.3ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [20adf447-091f-4884-8981-59bd00efbd0f]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [20adf447-091f-4884-8981-59bd00efbd0f]   Rendered messages/_message.html.erb (3.8ms)
+[ActiveJob] [MessageBroadcastJob] [20adf447-091f-4884-8981-59bd00efbd0f] [ActionCable] Broadcasting to trips_3_channel: {:message=>"<div class=\"card\">\n  <div class=\"card-block\">\n    <div class=\"row\">\n      <div class=\"col-md-1\">\n        <img alt=\"Miguel\" src=\"/system/users/avatars/000/000/001/small/brand.png?1490858163\" />\n      </div>\n      <div class=\"col-md-11\">\n        <p class=\"card-text\">\n          <span class=\"text-muted\">Miguel just now</span><br>\n          Hola\n        </p>\n      </div>\n    </div>\n  </div>\n</div>"}
+[ActiveJob] [MessageBroadcastJob] [20adf447-091f-4884-8981-59bd00efbd0f] Performed MessageBroadcastJob from Async(default) in 20.6ms
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel transmitting {"message"=>"<div class=\"card\">\n  <div class=\"card-block\">\n    <div class=\"row\">\n      <div class=\"col-md-1\">\n        <img alt=\"Miguel\" src=\"/system/users/avatars/000/000/001/small/brand.png?1490858163\" />\n      </div>\n      <div class=\"col-md-11\">\n        <p class=\"card-tex... (via streamed from trips_3_channel)
+Started GET "/trips/3" for ::1 at 2017-03-30 07:25:56 +0000
+Processing by TripsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.8ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.8ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  Rendering trips/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (17.9ms)
+  [1m[36mTrip Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1 AND "trips"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mLocation Load (0.9ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [2 times] (9.7ms)
+  Rendered locations/_new_location.html.erb (11.2ms)
+  Rendered trips/show.html.erb within layouts/application (88.4ms)
+Completed 200 OK in 493ms (Views: 458.2ms | ActiveRecord: 6.5ms)
+
+
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Finished "/cable/" [WebSocket] for ::1 at 2017-03-30 07:25:57 +0000
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel stopped streaming from trips_3_channel
+Started GET "/trips/3.json" for ::1 at 2017-03-30 07:25:57 +0000
+Processing by TripsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.7ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.8ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+Started GET "/cable" for ::1 at 2017-03-30 07:25:57 +0000
+Started GET "/cable/" [WebSocket] for ::1 at 2017-03-30 07:25:57 +0000
+  [1m[36mLocation Load (3.3ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Completed 200 OK in 30ms (Views: 4.5ms | ActiveRecord: 6.0ms)
+
+
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Registered connection (Z2lkOi8vaXJvbmhhY2stcHJvamVjdC9Vc2VyLzE)
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is transmitting the subscription confirmation
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is streaming from trips_3_channel
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel#send_message({"message"=>"adios", "trip_id"=>3})
+[ActionCable] [msanchezbrunetealvarez@gmail.com]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActionCable] [msanchezbrunetealvarez@gmail.com]   [1m[36mTrip Load (0.7ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com]   [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "messages" ("body", "user_id", "trip_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "adios"], ["user_id", 1], ["trip_id", 3], ["created_at", 2017-03-30 07:26:05 UTC], ["updated_at", 2017-03-30 07:26:05 UTC]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com]   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[ActionCable] [msanchezbrunetealvarez@gmail.com] [ActiveJob] Enqueued MessageBroadcastJob (Job ID: 5e267d4b-1f3f-4e02-b10d-a99ed27de345) to Async(default) with arguments: #<GlobalID:0x007f8d62b3b388 @uri=#<URI::GID gid://ironhack-project/Message/23>>
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [5e267d4b-1f3f-4e02-b10d-a99ed27de345] Performing MessageBroadcastJob from Async(default) with arguments: #<GlobalID:0x007f8d62b2aab0 @uri=#<URI::GID gid://ironhack-project/Message/23>>
+[ActiveJob] [MessageBroadcastJob] [5e267d4b-1f3f-4e02-b10d-a99ed27de345]   [1m[36mTrip Load (0.3ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [5e267d4b-1f3f-4e02-b10d-a99ed27de345]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [5e267d4b-1f3f-4e02-b10d-a99ed27de345]   Rendered messages/_message.html.erb (3.4ms)
+[ActiveJob] [MessageBroadcastJob] [5e267d4b-1f3f-4e02-b10d-a99ed27de345] [ActionCable] Broadcasting to trips_3_channel: {:message=>"<div class=\"card\">\n  <div class=\"card-block\">\n    <div class=\"row\">\n      <div class=\"col-md-1\">\n        <img alt=\"Miguel\" src=\"/system/users/avatars/000/000/001/small/brand.png?1490858163\" />\n      </div>\n      <div class=\"col-md-11\">\n        <p class=\"card-text\">\n          <span class=\"text-muted\">Miguel just now</span><br>\n          adios\n        </p>\n      </div>\n    </div>\n  </div>\n</div>"}
+[ActiveJob] [MessageBroadcastJob] [5e267d4b-1f3f-4e02-b10d-a99ed27de345] Performed MessageBroadcastJob from Async(default) in 16.92ms
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel transmitting {"message"=>"<div class=\"card\">\n  <div class=\"card-block\">\n    <div class=\"row\">\n      <div class=\"col-md-1\">\n        <img alt=\"Miguel\" src=\"/system/users/avatars/000/000/001/small/brand.png?1490858163\" />\n      </div>\n      <div class=\"col-md-11\">\n        <p class=\"card-tex... (via streamed from trips_3_channel)
+Started GET "/trips/3" for ::1 at 2017-03-30 07:28:30 +0000
+Processing by TripsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.3ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  Rendering trips/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (9.7ms)
+  [1m[36mTrip Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1 AND "trips"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [3 times] (5.7ms)
+  Rendered locations/_new_location.html.erb (6.6ms)
+  Rendered trips/show.html.erb within layouts/application (48.8ms)
+Completed 200 OK in 378ms (Views: 363.2ms | ActiveRecord: 3.8ms)
+
+
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Finished "/cable/" [WebSocket] for ::1 at 2017-03-30 07:28:31 +0000
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel stopped streaming from trips_3_channel
+Started GET "/trips/3.json" for ::1 at 2017-03-30 07:28:31 +0000
+Processing by TripsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.7ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+Started GET "/cable" for ::1 at 2017-03-30 07:28:31 +0000
+  [1m[36mLocation Load (1.8ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+Started GET "/cable/" [WebSocket] for ::1 at 2017-03-30 07:28:31 +0000
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Completed 200 OK in 29ms (Views: 6.1ms | ActiveRecord: 4.2ms)
+
+
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Registered connection (Z2lkOi8vaXJvbmhhY2stcHJvamVjdC9Vc2VyLzE)
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is transmitting the subscription confirmation
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is streaming from trips_3_channel
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel#send_message({"message"=>"adiossss", "trip_id"=>3})
+[ActionCable] [msanchezbrunetealvarez@gmail.com]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActionCable] [msanchezbrunetealvarez@gmail.com]   [1m[36mTrip Load (0.6ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com]   [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "messages" ("body", "user_id", "trip_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "adiossss"], ["user_id", 1], ["trip_id", 3], ["created_at", 2017-03-30 07:28:39 UTC], ["updated_at", 2017-03-30 07:28:39 UTC]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com]   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[ActionCable] [msanchezbrunetealvarez@gmail.com] [ActiveJob] Enqueued MessageBroadcastJob (Job ID: 57b40145-b502-47bf-bd65-276e319e02a8) to Async(default) with arguments: #<GlobalID:0x007f8d638484e0 @uri=#<URI::GID gid://ironhack-project/Message/24>>
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [57b40145-b502-47bf-bd65-276e319e02a8] Performing MessageBroadcastJob from Async(default) with arguments: #<GlobalID:0x007f8d635e8b00 @uri=#<URI::GID gid://ironhack-project/Message/24>>
+[ActiveJob] [MessageBroadcastJob] [57b40145-b502-47bf-bd65-276e319e02a8]   [1m[36mTrip Load (0.4ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [57b40145-b502-47bf-bd65-276e319e02a8]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [57b40145-b502-47bf-bd65-276e319e02a8]   Rendered messages/_message.html.erb (3.5ms)
+[ActiveJob] [MessageBroadcastJob] [57b40145-b502-47bf-bd65-276e319e02a8] [ActionCable] Broadcasting to trips_3_channel: {:message=>"<div class=\"card\">\n  <div class=\"card-block\">\n    <div class=\"row\">\n      <div class=\"col-md-1\">\n        <img alt=\"Miguel\" src=\"/system/users/avatars/000/000/001/small/brand.png?1490858163\" />\n      </div>\n      <div class=\"col-md-11\">\n        <p class=\"card-text\">\n          <span class=\"text-muted\">Miguel just now</span><br>\n          adiossss\n        </p>\n      </div>\n    </div>\n  </div>\n</div>"}
+[ActiveJob] [MessageBroadcastJob] [57b40145-b502-47bf-bd65-276e319e02a8] Performed MessageBroadcastJob from Async(default) in 17.77ms
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel transmitting {"message"=>"<div class=\"card\">\n  <div class=\"card-block\">\n    <div class=\"row\">\n      <div class=\"col-md-1\">\n        <img alt=\"Miguel\" src=\"/system/users/avatars/000/000/001/small/brand.png?1490858163\" />\n      </div>\n      <div class=\"col-md-11\">\n        <p class=\"card-tex... (via streamed from trips_3_channel)
+Started GET "/trips/3" for ::1 at 2017-03-30 07:29:30 +0000
+Processing by TripsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.3ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  Rendering trips/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (9.7ms)
+  [1m[36mTrip Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1 AND "trips"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [4 times] (6.8ms)
+  Rendered locations/_new_location.html.erb (6.3ms)
+  Rendered trips/show.html.erb within layouts/application (48.1ms)
+Completed 200 OK in 383ms (Views: 369.7ms | ActiveRecord: 3.4ms)
+
+
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Finished "/cable/" [WebSocket] for ::1 at 2017-03-30 07:29:31 +0000
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel stopped streaming from trips_3_channel
+Started GET "/trips/3.json" for ::1 at 2017-03-30 07:29:31 +0000
+Processing by TripsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.7ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mLocation Load (0.8ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+Completed 200 OK in 27ms (Views: 4.5ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/cable" for ::1 at 2017-03-30 07:29:31 +0000
+Started GET "/cable/" [WebSocket] for ::1 at 2017-03-30 07:29:31 +0000
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Registered connection (Z2lkOi8vaXJvbmhhY2stcHJvamVjdC9Vc2VyLzE)
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is transmitting the subscription confirmation
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is streaming from trips_3_channel
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel#send_message({"message"=>"hola", "trip_id"=>3})
+[ActionCable] [msanchezbrunetealvarez@gmail.com]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActionCable] [msanchezbrunetealvarez@gmail.com]   [1m[36mTrip Load (0.6ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com]   [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "messages" ("body", "user_id", "trip_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "hola"], ["user_id", 1], ["trip_id", 3], ["created_at", 2017-03-30 07:30:51 UTC], ["updated_at", 2017-03-30 07:30:51 UTC]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com]   [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+[ActionCable] [msanchezbrunetealvarez@gmail.com] [ActiveJob] Enqueued MessageBroadcastJob (Job ID: 73a628c3-6d28-4ffc-aeb3-2681df37a0a7) to Async(default) with arguments: #<GlobalID:0x007f8d64c916b8 @uri=#<URI::GID gid://ironhack-project/Message/25>>
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [73a628c3-6d28-4ffc-aeb3-2681df37a0a7] Performing MessageBroadcastJob from Async(default) with arguments: #<GlobalID:0x007f8d62ff26d8 @uri=#<URI::GID gid://ironhack-project/Message/25>>
+[ActiveJob] [MessageBroadcastJob] [73a628c3-6d28-4ffc-aeb3-2681df37a0a7]   [1m[36mTrip Load (0.3ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [73a628c3-6d28-4ffc-aeb3-2681df37a0a7]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [73a628c3-6d28-4ffc-aeb3-2681df37a0a7]   Rendered messages/_message.html.erb (3.5ms)
+[ActiveJob] [MessageBroadcastJob] [73a628c3-6d28-4ffc-aeb3-2681df37a0a7] [ActionCable] Broadcasting to trips_3_channel: {:message=>"<div class=\"card\">\n  <div class=\"card-block\">\n    <div class=\"row\">\n      <div class=\"col-md-1\">\n        <img alt=\"Miguel\" src=\"/system/users/avatars/000/000/001/small/brand.png?1490858163\" />\n      </div>\n      <div class=\"col-md-11\">\n        <p class=\"card-text\">\n          <span class=\"text-muted\">Miguel just now</span><br>\n          hola\n        </p>\n      </div>\n    </div>\n  </div>\n</div>"}
+[ActiveJob] [MessageBroadcastJob] [73a628c3-6d28-4ffc-aeb3-2681df37a0a7] Performed MessageBroadcastJob from Async(default) in 16.33ms
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel transmitting {"message"=>"<div class=\"card\">\n  <div class=\"card-block\">\n    <div class=\"row\">\n      <div class=\"col-md-1\">\n        <img alt=\"Miguel\" src=\"/system/users/avatars/000/000/001/small/brand.png?1490858163\" />\n      </div>\n      <div class=\"col-md-11\">\n        <p class=\"card-tex... (via streamed from trips_3_channel)
+Started GET "/trips/3" for ::1 at 2017-03-30 07:32:01 +0000
+Processing by TripsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.3ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  Rendering trips/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (11.5ms)
+  [1m[36mTrip Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1 AND "trips"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mLocation Load (0.7ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [5 times] (23.5ms)
+  Rendered locations/_new_location.html.erb (7.1ms)
+  Rendered trips/show.html.erb within layouts/application (501.0ms)
+Completed 200 OK in 836ms (Views: 821.1ms | ActiveRecord: 4.1ms)
+
+
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Finished "/cable/" [WebSocket] for ::1 at 2017-03-30 07:32:02 +0000
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel stopped streaming from trips_3_channel
+Started GET "/trips/3.json" for ::1 at 2017-03-30 07:32:02 +0000
+Processing by TripsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.7ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mLocation Load (0.7ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+Completed 200 OK in 27ms (Views: 4.2ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/cable" for ::1 at 2017-03-30 07:32:02 +0000
+Started GET "/cable/" [WebSocket] for ::1 at 2017-03-30 07:32:02 +0000
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Registered connection (Z2lkOi8vaXJvbmhhY2stcHJvamVjdC9Vc2VyLzE)
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is transmitting the subscription confirmation
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is streaming from trips_3_channel
+Started GET "/trips/3" for ::1 at 2017-03-30 07:33:30 +0000
+Processing by TripsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.7ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  Rendering trips/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (12.1ms)
+  [1m[36mTrip Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1 AND "trips"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mLocation Load (0.6ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [5 times] (10.0ms)
+  Rendered locations/_new_location.html.erb (6.8ms)
+  Rendered trips/show.html.erb within layouts/application (498.5ms)
+Completed 200 OK in 863ms (Views: 839.3ms | ActiveRecord: 5.4ms)
+
+
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Finished "/cable/" [WebSocket] for ::1 at 2017-03-30 07:33:31 +0000
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel stopped streaming from trips_3_channel
+Started GET "/trips/3.json" for ::1 at 2017-03-30 07:33:32 +0000
+Processing by TripsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.7ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+Started GET "/cable" for ::1 at 2017-03-30 07:33:32 +0000
+  [1m[36mLocation Load (1.8ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+Started GET "/cable/" [WebSocket] for ::1 at 2017-03-30 07:33:32 +0000
+Completed 200 OK in 30ms (Views: 6.2ms | ActiveRecord: 4.2ms)
+
+
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Registered connection (Z2lkOi8vaXJvbmhhY2stcHJvamVjdC9Vc2VyLzE)
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is transmitting the subscription confirmation
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is streaming from trips_3_channel
+Started GET "/trips/3" for ::1 at 2017-03-30 07:35:09 +0000
+Processing by TripsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.9ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  Rendering trips/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (10.5ms)
+  [1m[36mTrip Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1 AND "trips"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mLocation Load (0.7ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [5 times] (8.9ms)
+  Rendered locations/_new_location.html.erb (6.5ms)
+  Rendered trips/show.html.erb within layouts/application (499.7ms)
+Completed 200 OK in 815ms (Views: 791.4ms | ActiveRecord: 5.2ms)
+
+
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Finished "/cable/" [WebSocket] for ::1 at 2017-03-30 07:35:10 +0000
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel stopped streaming from trips_3_channel
+Started GET "/trips/3.json" for ::1 at 2017-03-30 07:35:11 +0000
+Processing by TripsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.7ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Started GET "/cable" for ::1 at 2017-03-30 07:35:11 +0000
+  [1m[36mMessage Load (1.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Started GET "/cable/" [WebSocket] for ::1 at 2017-03-30 07:35:11 +0000
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mUser Load (4.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Registered connection (Z2lkOi8vaXJvbmhhY2stcHJvamVjdC9Vc2VyLzE)
+  [1m[36mLocation Load (2.3ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+Completed 200 OK in 39ms (Views: 5.2ms | ActiveRecord: 5.5ms)
+
+
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is transmitting the subscription confirmation
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is streaming from trips_3_channel
+Started GET "/trips/3" for ::1 at 2017-03-30 07:40:55 +0000
+Processing by TripsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.6ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  Rendering trips/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (423.2ms)
+  [1m[36mTrip Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1 AND "trips"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mLocation Load (0.7ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [5 times] (8.9ms)
+  Rendered locations/_new_location.html.erb (7.1ms)
+  Rendered trips/show.html.erb within layouts/application (495.9ms)
+Completed 200 OK in 810ms (Views: 783.9ms | ActiveRecord: 5.5ms)
+
+
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Finished "/cable/" [WebSocket] for ::1 at 2017-03-30 07:40:56 +0000
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel stopped streaming from trips_3_channel
+Started GET "/trips/3.json" for ::1 at 2017-03-30 07:40:56 +0000
+Processing by TripsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.7ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mLocation Load (0.8ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+Completed 200 OK in 35ms (Views: 10.6ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/cable" for ::1 at 2017-03-30 07:40:56 +0000
+Started GET "/cable/" [WebSocket] for ::1 at 2017-03-30 07:40:56 +0000
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Registered connection (Z2lkOi8vaXJvbmhhY2stcHJvamVjdC9Vc2VyLzE)
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is transmitting the subscription confirmation
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is streaming from trips_3_channel
+Started GET "/users/1" for ::1 at 2017-03-30 07:41:31 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (10.5ms)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered users/show.html.erb within layouts/application (58.5ms)
+Completed 200 OK in 528ms (Views: 523.6ms | ActiveRecord: 1.6ms)
+
+
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Finished "/cable/" [WebSocket] for ::1 at 2017-03-30 07:41:32 +0000
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel stopped streaming from trips_3_channel
+Started POST "/user/upload" for ::1 at 2017-03-30 07:41:48 +0000
+Processing by UsersController#upload_avatar as HTML
+  Parameters: {"user"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x007f8d63849520 @tempfile=#<Tempfile:/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/RackMultipart20170330-631-141ac9b.gif>, @original_filename="loading.gif", @content_type="image/gif", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"loading.gif\"\r\nContent-Type: image/gif\r\n">}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Command :: file -b --mime '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a14fa2166ed698f3d04061f57e5ab9b920170330-631-m7d65a.gif'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a14fa2166ed698f3d04061f57e5ab9b920170330-631-id8k87.gif[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a14fa2166ed698f3d04061f57e5ab9b920170330-631-id8k87.gif[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a14fa2166ed698f3d04061f57e5ab9b920170330-631-id8k87.gif' -coalesce -auto-orient -resize "300x300>" -layers "optimize" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/ce34f44b5e2631ac57528e4b7470bd7e20170330-631-1c2tbod'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a14fa2166ed698f3d04061f57e5ab9b920170330-631-id8k87.gif[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a14fa2166ed698f3d04061f57e5ab9b920170330-631-id8k87.gif[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a14fa2166ed698f3d04061f57e5ab9b920170330-631-id8k87.gif' -coalesce -auto-orient -resize "40x40>" -layers "optimize" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/ce34f44b5e2631ac57528e4b7470bd7e20170330-631-1dtuqcn'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a14fa2166ed698f3d04061f57e5ab9b920170330-631-id8k87.gif[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a14fa2166ed698f3d04061f57e5ab9b920170330-631-id8k87.gif[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a14fa2166ed698f3d04061f57e5ab9b920170330-631-id8k87.gif' -coalesce -auto-orient -resize "60x60" -layers "optimize" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/ce34f44b5e2631ac57528e4b7470bd7e20170330-631-1rul2b1'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a14fa2166ed698f3d04061f57e5ab9b920170330-631-id8k87.gif[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a14fa2166ed698f3d04061f57e5ab9b920170330-631-id8k87.gif[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a14fa2166ed698f3d04061f57e5ab9b920170330-631-id8k87.gif' -coalesce -auto-orient -resize "100x100>" -layers "optimize" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/ce34f44b5e2631ac57528e4b7470bd7e20170330-631-1d3nwib'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a14fa2166ed698f3d04061f57e5ab9b920170330-631-id8k87.gif[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a14fa2166ed698f3d04061f57e5ab9b920170330-631-id8k87.gif[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a14fa2166ed698f3d04061f57e5ab9b920170330-631-id8k87.gif' -coalesce -auto-orient -resize "500x500>" -layers "optimize" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/ce34f44b5e2631ac57528e4b7470bd7e20170330-631-y9mc5z'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a14fa2166ed698f3d04061f57e5ab9b920170330-631-id8k87.gif[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a14fa2166ed698f3d04061f57e5ab9b920170330-631-id8k87.gif[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/a14fa2166ed698f3d04061f57e5ab9b920170330-631-id8k87.gif' -coalesce -auto-orient -resize "250x250>" -layers "optimize" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/ce34f44b5e2631ac57528e4b7470bd7e20170330-631-dejfwc'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "users" SET "avatar_file_name" = $1, "avatar_content_type" = $2, "avatar_file_size" = $3, "avatar_updated_at" = $4, "updated_at" = $5 WHERE "users"."id" = $6[0m  [["avatar_file_name", "loading.gif"], ["avatar_content_type", "image/gif"], ["avatar_file_size", 332920], ["avatar_updated_at", 2017-03-30 07:41:48 UTC], ["updated_at", 2017-03-30 07:41:56 UTC], ["id", 1]]
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/original/brand.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/medium/brand.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/small/brand.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/common/brand.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/thumb/brand.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/big/brand.png
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/profile/brand.png
+  [1m[35m (16.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 8060ms (ActiveRecord: 17.8ms)
+
+
+Started GET "/users/1" for ::1 at 2017-03-30 07:41:56 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (15.2ms)
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered users/show.html.erb within layouts/application (49.8ms)
+Completed 200 OK in 427ms (Views: 422.4ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/user/upload" for ::1 at 2017-03-30 07:42:08 +0000
+Processing by UsersController#upload_avatar as HTML
+  Parameters: {"user"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x007f8d63cb39d0 @tempfile=#<Tempfile:/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/RackMultipart20170330-631-lu1191.jpg>, @original_filename="img-avatar.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"img-avatar.jpg\"\r\nContent-Type: image/jpeg\r\n">}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Command :: file -b --mime '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/baf4c97823bbd376816f35f977a1993d20170330-631-1jttyf9.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/baf4c97823bbd376816f35f977a1993d20170330-631-4baymt.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/baf4c97823bbd376816f35f977a1993d20170330-631-4baymt.jpg[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/baf4c97823bbd376816f35f977a1993d20170330-631-4baymt.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/eed63c22b1e2afbcc1c1fde4d572f59a20170330-631-fnnv1j'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/baf4c97823bbd376816f35f977a1993d20170330-631-4baymt.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/baf4c97823bbd376816f35f977a1993d20170330-631-4baymt.jpg[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/baf4c97823bbd376816f35f977a1993d20170330-631-4baymt.jpg[0]' -auto-orient -resize "40x40>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/eed63c22b1e2afbcc1c1fde4d572f59a20170330-631-1bdtgxh'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/baf4c97823bbd376816f35f977a1993d20170330-631-4baymt.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/baf4c97823bbd376816f35f977a1993d20170330-631-4baymt.jpg[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/baf4c97823bbd376816f35f977a1993d20170330-631-4baymt.jpg[0]' -auto-orient -resize "60x60" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/eed63c22b1e2afbcc1c1fde4d572f59a20170330-631-15645n0'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/baf4c97823bbd376816f35f977a1993d20170330-631-4baymt.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/baf4c97823bbd376816f35f977a1993d20170330-631-4baymt.jpg[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/baf4c97823bbd376816f35f977a1993d20170330-631-4baymt.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/eed63c22b1e2afbcc1c1fde4d572f59a20170330-631-sjo4s9'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/baf4c97823bbd376816f35f977a1993d20170330-631-4baymt.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/baf4c97823bbd376816f35f977a1993d20170330-631-4baymt.jpg[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/baf4c97823bbd376816f35f977a1993d20170330-631-4baymt.jpg[0]' -auto-orient -resize "500x500>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/eed63c22b1e2afbcc1c1fde4d572f59a20170330-631-1khx29p'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/baf4c97823bbd376816f35f977a1993d20170330-631-4baymt.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/baf4c97823bbd376816f35f977a1993d20170330-631-4baymt.jpg[0]'
+Command :: convert '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/baf4c97823bbd376816f35f977a1993d20170330-631-4baymt.jpg[0]' -auto-orient -resize "250x250>" '/var/folders/q9/wf77gjgj0hv383x0n7c3ky800000gn/T/eed63c22b1e2afbcc1c1fde4d572f59a20170330-631-1jpxr2j'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "avatar_file_name" = $1, "avatar_content_type" = $2, "avatar_file_size" = $3, "avatar_updated_at" = $4, "updated_at" = $5 WHERE "users"."id" = $6[0m  [["avatar_file_name", "img-avatar.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 7997], ["avatar_updated_at", 2017-03-30 07:42:08 UTC], ["updated_at", 2017-03-30 07:42:09 UTC], ["id", 1]]
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/original/loading.gif
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/medium/loading.gif
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/small/loading.gif
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/common/loading.gif
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/thumb/loading.gif
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/big/loading.gif
+[paperclip] deleting /Users/Miguel/VadeViajes/public/system/users/avatars/000/000/001/profile/loading.gif
+  [1m[35m (16.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 466ms (ActiveRecord: 17.4ms)
+
+
+Started GET "/users/1" for ::1 at 2017-03-30 07:42:09 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (13.1ms)
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered users/show.html.erb within layouts/application (30.5ms)
+Completed 200 OK in 413ms (Views: 408.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/trips" for ::1 at 2017-03-30 07:42:15 +0000
+Processing by TripsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering trips/index.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (15.3ms)
+  [1m[36mTrip Load (0.7ms)[0m  [1m[34mSELECT "trips".* FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 4]]
+  Rendered trips/index.html.erb within layouts/application (40.3ms)
+Completed 200 OK in 395ms (Views: 367.2ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/trips/4" for ::1 at 2017-03-30 07:42:41 +0000
+Processing by TripsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.3ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 4[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 4[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 4[0m
+  Rendering trips/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (10.2ms)
+  [1m[36mTrip Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1 AND "trips"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 4]]
+  [1m[36mLocation Load (0.5ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 4]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [1 times] (2.9ms)
+  Rendered locations/_new_location.html.erb (7.1ms)
+  Rendered trips/show.html.erb within layouts/application (182.7ms)
+Completed 200 OK in 525ms (Views: 509.9ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/trips/4.json" for ::1 at 2017-03-30 07:42:42 +0000
+Processing by TripsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.6ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 4[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 4[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 4[0m
+Started GET "/cable" for ::1 at 2017-03-30 07:42:42 +0000
+  [1m[36mLocation Load (1.0ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 4]]
+Completed 200 OK in 21ms (Views: 1.8ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/cable/" [WebSocket] for ::1 at 2017-03-30 07:42:42 +0000
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Registered connection (Z2lkOi8vaXJvbmhhY2stcHJvamVjdC9Vc2VyLzE)
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is transmitting the subscription confirmation
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is streaming from trips_4_channel
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Finished "/cable/" [WebSocket] for ::1 at 2017-03-30 07:58:30 +0000
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel stopped streaming from trips_4_channel
+Started GET "/cable" for ::1 at 2017-03-30 07:58:31 +0000
+Started GET "/cable/" [WebSocket] for ::1 at 2017-03-30 07:58:36 +0000
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Registered connection (Z2lkOi8vaXJvbmhhY2stcHJvamVjdC9Vc2VyLzE)
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is transmitting the subscription confirmation
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is streaming from trips_4_channel
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Finished "/cable/" [WebSocket] for ::1 at 2017-03-30 07:59:32 +0000
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel stopped streaming from trips_4_channel
+Started GET "/cable" for ::1 at 2017-03-30 07:59:34 +0000
+Started GET "/cable/" [WebSocket] for ::1 at 2017-03-30 07:59:34 +0000
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Registered connection (Z2lkOi8vaXJvbmhhY2stcHJvamVjdC9Vc2VyLzE)
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is transmitting the subscription confirmation
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is streaming from trips_4_channel
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Finished "/cable/" [WebSocket] for ::1 at 2017-03-30 08:00:40 +0000
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel stopped streaming from trips_4_channel
+Started GET "/cable" for ::1 at 2017-03-30 08:00:41 +0000
+Started GET "/cable/" [WebSocket] for ::1 at 2017-03-30 08:00:41 +0000
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Registered connection (Z2lkOi8vaXJvbmhhY2stcHJvamVjdC9Vc2VyLzE)
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is transmitting the subscription confirmation
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is streaming from trips_4_channel
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Finished "/cable/" [WebSocket] for ::1 at 2017-03-30 08:02:08 +0000
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel stopped streaming from trips_4_channel
+Started GET "/cable" for ::1 at 2017-03-30 08:02:10 +0000
+Started GET "/cable/" [WebSocket] for ::1 at 2017-03-30 08:02:10 +0000
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Registered connection (Z2lkOi8vaXJvbmhhY2stcHJvamVjdC9Vc2VyLzE)
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is transmitting the subscription confirmation
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is streaming from trips_4_channel
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel#send_message({"message"=>"adios", "trip_id"=>4})
+[ActionCable] [msanchezbrunetealvarez@gmail.com]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActionCable] [msanchezbrunetealvarez@gmail.com]   [1m[36mTrip Load (0.6ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com]   [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "messages" ("body", "user_id", "trip_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "adios"], ["user_id", 1], ["trip_id", 4], ["created_at", 2017-03-30 08:04:02 UTC], ["updated_at", 2017-03-30 08:04:02 UTC]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com]   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[ActionCable] [msanchezbrunetealvarez@gmail.com] [ActiveJob] Enqueued MessageBroadcastJob (Job ID: dbd5e2b6-b996-4971-aca8-a544be0be796) to Async(default) with arguments: #<GlobalID:0x007f8d60f98c98 @uri=#<URI::GID gid://ironhack-project/Message/26>>
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [dbd5e2b6-b996-4971-aca8-a544be0be796] Performing MessageBroadcastJob from Async(default) with arguments: #<GlobalID:0x007f8d60f000b0 @uri=#<URI::GID gid://ironhack-project/Message/26>>
+[ActiveJob] [MessageBroadcastJob] [dbd5e2b6-b996-4971-aca8-a544be0be796]   [1m[36mTrip Load (0.4ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [dbd5e2b6-b996-4971-aca8-a544be0be796]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [dbd5e2b6-b996-4971-aca8-a544be0be796]   Rendered messages/_message.html.erb (4.2ms)
+[ActiveJob] [MessageBroadcastJob] [dbd5e2b6-b996-4971-aca8-a544be0be796] [ActionCable] Broadcasting to trips_4_channel: {:message=>"<div class=\"card\">\n  <div class=\"card-block\">\n    <div class=\"row\">\n      <div class=\"col-md-1\">\n        <img alt=\"Miguel\" src=\"/system/users/avatars/000/000/001/small/img-avatar.jpg?1490859728\" />\n      </div>\n      <div class=\"col-md-11\">\n        <p class=\"card-text\">\n          <span class=\"text-muted\">Miguel just now</span><br>\n          adios\n        </p>\n      </div>\n    </div>\n  </div>\n</div>"}
+[ActiveJob] [MessageBroadcastJob] [dbd5e2b6-b996-4971-aca8-a544be0be796] Performed MessageBroadcastJob from Async(default) in 37.63ms
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel transmitting {"message"=>"<div class=\"card\">\n  <div class=\"card-block\">\n    <div class=\"row\">\n      <div class=\"col-md-1\">\n        <img alt=\"Miguel\" src=\"/system/users/avatars/000/000/001/small/img-avatar.jpg?1490859728\" />\n      </div>\n      <div class=\"col-md-11\">\n        <p class=\"car... (via streamed from trips_4_channel)
+Started GET "/trips" for ::1 at 2017-03-30 08:04:16 +0000
+Processing by TripsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering trips/index.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (38.9ms)
+  [1m[36mTrip Load (0.8ms)[0m  [1m[34mSELECT "trips".* FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 4]]
+  Rendered trips/index.html.erb within layouts/application (73.3ms)
+Completed 200 OK in 567ms (Views: 537.1ms | ActiveRecord: 2.3ms)
+
+
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Finished "/cable/" [WebSocket] for ::1 at 2017-03-30 08:04:16 +0000
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel stopped streaming from trips_4_channel
+Started GET "/trips/3" for ::1 at 2017-03-30 08:04:47 +0000
+Processing by TripsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.4ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  Rendering trips/show.html.erb within layouts/application
+  Rendered users/_navbar.html.erb (9.0ms)
+  [1m[36mTrip Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "trips" INNER JOIN "trip_participations" ON "trips"."id" = "trip_participations"."trip_id" WHERE "trip_participations"."user_id" = $1 AND "trips"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "trip_participations" ON "users"."id" = "trip_participations"."user_id" WHERE "trip_participations"."trip_id" = $1[0m  [["trip_id", 3]]
+  [1m[36mLocation Load (0.5ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [5 times] (8.9ms)
+  Rendered locations/_new_location.html.erb (33.5ms)
+  Rendered trips/show.html.erb within layouts/application (104.3ms)
+Completed 200 OK in 469ms (Views: 430.4ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/trips/3.json" for ::1 at 2017-03-30 08:04:48 +0000
+Processing by TripsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrip Load (0.7ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "trips".* FROM "trips" WHERE "trips"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."trip_id" = 3[0m
+  [1m[36mLocation Load (0.8ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."trip_id" = $1 ORDER BY initdate ASC[0m  [["trip_id", 3]]
+Completed 200 OK in 32ms (Views: 4.3ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/cable" for ::1 at 2017-03-30 08:04:48 +0000
+Started GET "/cable/" [WebSocket] for ::1 at 2017-03-30 08:04:48 +0000
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [msanchezbrunetealvarez@gmail.com] Registered connection (Z2lkOi8vaXJvbmhhY2stcHJvamVjdC9Vc2VyLzE)
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is transmitting the subscription confirmation
+[ActionCable] [msanchezbrunetealvarez@gmail.com] TripsChannel is streaming from trips_3_channel

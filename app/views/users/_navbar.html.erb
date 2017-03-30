@@ -30,9 +30,9 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <% if @current_user.avatar_file_size != nil %>
-              <%= image_tag @current_user.avatar.url(:small)%>
+              <%= image_tag @current_user.avatar.url(:small), class:"profile-image" %>
             <% else %>
-              <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=40x40" %>
+              <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=40x40", class:"profile-image" %>
             <% end %>
             <%=@current_user.firstname%> <span class="caret"></span></a>
           <ul class="dropdown-menu">
