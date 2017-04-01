@@ -13,9 +13,9 @@
 	          <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=250x250", class: "avatar", id: "avatar" %>
 	        <% end %>
 	        <% if @current_user == @user %>
-	        	<form class="myForm" id="myForm" enctype="multipart/form-data" action="/user/upload" accept-charset="UTF-8" method="post">
-						   <input id="upload-avatar" class="btn btn-default btn-file" type="file" name="user[avatar]">
-						</form>
+	        	<%= form_for @user, url: "/user/upload", id: "myForm", method: "post" do |f| %>
+						  <%= f.file_field :avatar, id: "upload-avatar", class: "btn btn-default btn-file"%>
+						<% end %>
 	        <% end %>
 	      </div>
 	      <div id="info">

@@ -6,5 +6,5 @@ document.getElementById('upload-avatar').addEventListener('change', function(eve
   }
   reader.readAsDataURL(image);
 
-	$("#myForm").submit();
+	$(".edit_user").submit();
 });
