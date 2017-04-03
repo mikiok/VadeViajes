@@ -10,7 +10,7 @@ function initMap() {
 		}
 
 		if(http.readyState == 4){
-			document.getElementsByClassName('modal-body')[0].innerHTML = `<div id="map"></div>`;
+			document.getElementsByClassName('new-location-modal-body')[0].innerHTML = `<div id="map"></div>`;
 			var loc = JSON.parse(http.response);
 
 			console.log(loc);

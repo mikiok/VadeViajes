@@ -56,7 +56,7 @@
 					  	<% @locations.each_with_index do |location, index| %>
 						    <li>
 						    	<button class="locationInfo" href="#">
-						    		<img src="/mapMarkers/<%= order[index] %>.png" class="location-marker">
+						    		<img src="/mapmarkers/<%= order[index] %>.png" class="location-marker">
 								    <%= location.name %>( <%= location.initdate.strftime('%d-%m-%Y') %> - <%= location.enddate.strftime('%d-%m-%Y') %> )
 						    	</button>
 						    	<%= button_to('x', location_path(location, @trip), method: 'delete', data: {confirm: 'Are you sure?'}, class: 'removeLocation') %>
@@ -83,9 +83,20 @@
 				  </div>
 				<% end %>
 			</div>
+
+			<script type="text/javascript">
+				document.getElementsByClassName("addUser")[0].addEventListener('click', function(){
+					$('.add-user-modal').modal("show");
+				});
+				$('add-user-modal').on('shown.bs.modal', function () {
+				  $('#myInput').focus()
+				});
+			</script>
+
 		</div>
 
 		<%= render 'locations/new_location' %>
+		<%= render 'users/users_modal' %>
 	</div>
 <% else %>
 	<%= render :file => 'public/404.html' %>

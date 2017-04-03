@@ -1,0 +1,26 @@
+<div class="modal add-user-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="add-user-modal-body modal-body">
+        <input type="text" class="form-control search-users" placeholder="Search" autocomplete="off">
+        <div class="filtered-users">
+        	<% @users.each do |user| %>
+						<div class="user">
+							<img class="avataar" src=<%= user.avatar.url(:thumb)%>>
+							<%= user.firstname + " " + user.lastname %>
+							<button class="add-user-button" href="#" role="button">
+								<div class="icon">
+									<!-- <i class="fa fa-remove"></i> -->
+									<span>remove</span>
+								</div>
+							</button>
+						</div>
+        	<% end %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Accept</button>
+      </div>
+    </div>
+  </div>
+</div>

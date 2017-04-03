@@ -27,6 +27,7 @@ class TripsController < ApplicationController
 			render :file => 'public/404.html'
 		end
 		trip
+		@users = User.all
 		@message = Message.new
 		@locations = @trip.locations.order('initdate ASC')
 		@location = trip.locations.new

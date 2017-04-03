@@ -8,7 +8,7 @@
 			<div id="user">
 				<div id="userImage">
 					<% if @user.avatar_file_size != nil %>
-	          <%= image_tag @user.avatar.url(:profile), class: "avatar", id: "avatar" %>
+	          <%= image_tag @user.avatar.url(:big), class: "avatar", id: "avatar" %>
 	        <% else %>
 	          <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=250x250", class: "avatar", id: "avatar" %>
 	        <% end %>

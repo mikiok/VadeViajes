@@ -1,7 +1,44 @@
 @import "font-awesome";
 
 .body-content{
-  padding: 5px;  
+  padding: 5px; 
+  .filtered-users{
+    height: 300px;
+    overflow: auto;
+    .user{
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid gray;
+      .avatar{
+        width: 100px;
+        height: 100px;
+      }
+    }
+  } 
+  // Variables
+  $color: #c0392b;
+  $color-dark: #a53125;
+  $speed: "0.25s";
+  $transition: all #{$speed} cubic-bezier(0.310, -0.105, 0.430, 1.400);
+
+  /* Main Styles */
+  .add-user-button {
+    display: block;
+    background-color: $color;
+    width: 120px;
+    height: 40px;
+    color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 5px;
+    span{
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+  }
 }
 #content{
   margin: 0 auto;
@@ -46,7 +83,7 @@
 
   #mapContainer{
     margin: 20px;
-    width: 800px;
+    width: 650px;
     min-width: 340px;
     #mapHeader{
       display: flex;
