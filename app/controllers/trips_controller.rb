@@ -13,7 +13,7 @@ class TripsController < ApplicationController
 	def create
 		trip = Trip.new(trip_params)
 		if trip.save
-			add_user_to_trip(@current_user.id, "creator", trip.id)
+			add_admin_to_trip(@current_user.id, trip.id)
 			flash[:notice]="The trip was succesfully created"
 			redirect_to "/trips/#{trip.id}"
 		else
@@ -51,12 +51,22 @@ class TripsController < ApplicationController
 		redirect_to "/trips"
 	end
 
-	def add_user_to_trip  (user_id, role="participant", trip_id)
+	def add_admin_to_trip  (user_id, trip_id)
 		tripParticipation = TripParticipation.new
-		tripParticipation.role = role
+		tripParticipation.role = "creator"
 		tripParticipation.user = User.find(user_id)
 		tripParticipation.trip = Trip.find(trip_id)
 		tripParticipation.save
+	end
+
+	def add_user_to_trip
+		tripParticipation = TripParticipation.new
+		binding.pry
+		tripParticipation.role = "participant"
+		tripParticipation.user = User.find(params[:format])
+		tripParticipation.trip = Trip.find(params[:id])
+		tripParticipation.save
+		redirect_to "/trips/#{params[:id]}"
 	end
 
 	def add_location_to_trip

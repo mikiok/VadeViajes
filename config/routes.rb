@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show'
   post '/user/upload', to: 'users#upload_avatar'
   post '/trips/:id', to: 'trips#add_location_to_trip'
+  post '/trips/:id/add_user', to: 'trips#add_user_to_trip', as: 'add_user'
   delete '/trips/:id/location/destroy', to: 'locations#destroy', as: 'location'
   mount ActionCable.server => '/cable'
   #get 'users/:id', to: 'users#show'

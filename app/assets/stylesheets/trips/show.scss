@@ -12,13 +12,13 @@
       align-items: center;
       border: 1px solid gray;
       .avatar{
-        width: 100px;
-        height: 100px;
+        width: 60px;
+        height: 60px;
       }
     }
   } 
   // Variables
-  $color: #c0392b;
+  $color: #20cc2e;
   $color-dark: #a53125;
   $speed: "0.25s";
   $transition: all #{$speed} cubic-bezier(0.310, -0.105, 0.430, 1.400);

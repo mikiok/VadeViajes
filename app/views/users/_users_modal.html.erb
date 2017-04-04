@@ -6,14 +6,13 @@
         <div class="filtered-users">
         	<% @users.each do |user| %>
 						<div class="user">
-							<img class="avataar" src=<%= user.avatar.url(:thumb)%>>
+              <% if user.avatar_file_size != nil %>
+                <%= image_tag user.avatar.url(:common), class: "avatar"%>
+              <% else %>
+                <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=60x60", class: "avatar"%>
+              <% end %>
 							<%= user.firstname + " " + user.lastname %>
-							<button class="add-user-button" href="#" role="button">
-								<div class="icon">
-									<!-- <i class="fa fa-remove"></i> -->
-									<span>remove</span>
-								</div>
-							</button>
+              <%= button_to('Add', add_user_path(@trip.id, user.id), method: "post", class: 'add_user_button') %>
 						</div>
         	<% end %>
         </div>

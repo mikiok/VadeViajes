@@ -1,1 +1,43 @@
+<%= stylesheet_link_tag    'users/show', media: 'all' %>
+
 <%= render 'navbar' %>
+
+<% if @current_user != nil %>
+	<div class="body-content">
+		<div id="content">
+			<div id="user">
+				<div id="userImage">
+					<% if @current_user.avatar_file_size != nil %>
+	          <%= image_tag @current_user.avatar.url(:big), class: "avatar", id: "avatar" %>
+	        <% else %>
+	          <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=250x250", class: "avatar", id: "avatar" %>
+	        <% end %>
+	        <% if @current_user == @current_user %>
+	        	<%= form_for @current_user, url: "/user/upload", id: "myForm", method: "post" do |f| %>
+						  <%= f.file_field :avatar, id: "upload-avatar", class: "btn btn-default btn-file"%>
+						<% end %>
+	        <% end %>
+	      </div>
+	      <div id="info">
+		      <div id="userName">
+		      	<%= @current_user.firstname %>
+		      	<br>
+		      	<%= @current_user.lastname %>
+		      	<br>
+		      </div>
+		      <div id="trips">
+		      	<% if @current_user.trips.count()==1 %>
+		      		<%= @current_user.trips.count() %> trip done
+		      	<% else %>
+		      		<%= @current_user.trips.count() %> trips done
+		      	<% end %>
+		      </div>
+		     </div>
+			</div>
+		</div>
+	</div>
+<% else %>
+	<%= render :file => 'public/404.html' %>
+<% end %>
+
+<%= javascript_include_tag 'users/show'%>
