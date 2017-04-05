@@ -1,0 +1,27 @@
+<div class="modal add-user-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="add-user-modal-body modal-body">
+        <input type="text" class="form-control search-users" placeholder="Search" autocomplete="off" autofocus="true">
+        <div class="filtered-users">
+        	<% @users.each do |user| %>
+            <% if !@trip.users.include? user %>
+  						<div class="user">
+                <% if user.avatar_file_size != nil %>
+                  <%= image_tag user.avatar.url(:common), class: "avatar"%>
+                <% else %>
+                  <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=60x60", class: "avatar"%>
+                <% end %>
+  							<%= user.firstname + " " + user.lastname %>
+                <%= button_to('Add', add_user_path(@trip.id, user.id), method: "post", class: 'add-user-button') %>
+  						</div>
+            <% end %>
+        	<% end %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Accept</button>
+      </div>
+    </div>
+  </div>
+</div>

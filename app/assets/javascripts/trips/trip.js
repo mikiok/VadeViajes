@@ -21,7 +21,56 @@ $(document).ready( function(){
 
 	document.getElementById("add-location").addEventListener("click", function(){
 		$('.new-location-modal').modal("hide");
-		window.location.reload();
 	});
 });
 initLocationsMap();
+
+function filterUsers() {
+
+	var http = new XMLHttpRequest();
+	http.open("GET", "/users.json", true);
+
+	http.onreadystatechange = function(){
+
+		if(http.readyState == 3){
+			console.log("Loading...");
+		}
+
+		if(http.readyState == 4){
+			var users = JSON.parse(http.response);
+			printusers();
+		}
+	};
+	http.send();
+}
+function printUsers(users){
+
+
+
+	var array = ($.map(users, function (value) {
+		if(value.avatar == "/avatars/original/missing.png"){
+			var avatar = "https://www.gravatar.com/avatar/0?d=mm&f=y&s=40x40";
+		}else{
+			var avatar = value.avatar;
+		}
+		return {
+			label: value.fullname,
+			value: value.id,
+			avatar: avatar
+		}
+	}));
+
+
+	
+	users.forEach(function(user){
+		var outputUser= `<div class='user'> <img class='avatar' 
+			src='/system/users/avatars/000/000/001/common/Screenshot_from_2017-02-15_14-49-50.png?1491216693' 
+			alt='Screenshot from 2017 02 15 14 49 50'> Miguel Sánchez-Brunete Álvarez 
+			<form class='button_to' method='post' action='/trips/9/add_user.1'>
+				<input class='add-user-button' type='submit' value='Add'>
+				<input type='hidden' name='authenticity_token' 
+				value='ZxNxS5pcujYJNwb+QXaPQOTi11qnLHb2O/TqLjNFrx4DQlRRXn0XKvMMx0JdNW5CLHIbo9Dh4EQem9NZhEsNrw=='>
+			</form> 
+			</div>`
+	});
+}

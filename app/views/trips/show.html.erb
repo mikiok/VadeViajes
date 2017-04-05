@@ -40,6 +40,9 @@
 	      <button class="addUser">
 	      	<i class="fa fa-plus"></i>
 	      </button>
+	      <button class="deleteUser">
+	      	<i class="fa fa-close"></i>
+	      </button>
 			</div>
 			<div id="mapContainer">
 				<div id="mapHeader">
@@ -88,15 +91,17 @@
 				document.getElementsByClassName("addUser")[0].addEventListener('click', function(){
 					$('.add-user-modal').modal("show");
 				});
-				$('add-user-modal').on('shown.bs.modal', function () {
-				  $('#myInput').focus()
+
+				document.getElementsByClassName("deleteUser")[0].addEventListener('click', function(){
+					$('.delete-user-modal').modal("show");
 				});
 			</script>
 
 		</div>
 
 		<%= render 'locations/new_location' %>
-		<%= render 'users/users_modal' %>
+		<%= render 'users/add_users_modal' %>
+		<%= render 'users/delete_users_modal' %>
 	</div>
 <% else %>
 	<%= render :file => 'public/404.html' %>

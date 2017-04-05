@@ -61,12 +61,15 @@ class TripsController < ApplicationController
 
 	def add_user_to_trip
 		tripParticipation = TripParticipation.new
-		binding.pry
 		tripParticipation.role = "participant"
 		tripParticipation.user = User.find(params[:format])
 		tripParticipation.trip = Trip.find(params[:id])
 		tripParticipation.save
 		redirect_to "/trips/#{params[:id]}"
+	end
+
+	def delete_user_from_trip
+		TripParticipation.find_by(id: params[:id]).destroy
 	end
 
 	def add_location_to_trip
