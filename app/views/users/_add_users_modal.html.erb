@@ -2,25 +2,31 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="add-user-modal-body modal-body">
-        <input type="text" class="form-control search-users" placeholder="Search" autocomplete="off" autofocus="true">
+        <!--<input type="text" class="form-control search-users" placeholder="Search" autocomplete="off" autofocus="true">-->
         <div class="filtered-users">
         	<% @users.each do |user| %>
-            <% if !@trip.users.include? user %>
-  						<div class="user">
-                <% if user.avatar_file_size != nil %>
-                  <%= image_tag user.avatar.url(:common), class: "avatar"%>
+						<div class="user">
+              <% if user.avatar_file_size != nil %>
+                <%= image_tag user.avatar.url(:common), class: "avatar"%>
+              <% else %>
+                <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=60x60", class: "avatar"%>
+              <% end %>
+							<%= user.firstname + " " + user.lastname %>
+              <div class="add-button">
+                <% if !@trip.users.include? user %>
+                  <%= button_to('Add', add_user_path(@trip.id, user.id), method: "post", class: 'add-user-button') %>
                 <% else %>
-                  <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=60x60", class: "avatar"%>
+                  <button class="added-user-button">
+                    <span><i class="fa fa-check" aria-hidden="true"></i></span>
+                  </button>
                 <% end %>
-  							<%= user.firstname + " " + user.lastname %>
-                <%= button_to('Add', add_user_path(@trip.id, user.id), method: "post", class: 'add-user-button') %>
-  						</div>
-            <% end %>
+              </div>
+						</div>
         	<% end %>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Accept</button>
+        <button type="button" class="btn btn-primary accept-add-users" data-dismiss="modal">Accept</button>
       </div>
     </div>
   </div>

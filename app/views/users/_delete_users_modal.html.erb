@@ -5,20 +5,22 @@
         <input type="text" class="form-control search-users" placeholder="Search" autocomplete="off" autofocus="true">
         <div class="filtered-users">
         	<% @trip.users.each do |user| %>
-						<div class="user">
-              <% if user.avatar_file_size != nil %>
-                <%= image_tag user.avatar.url(:common), class: "avatar"%>
-              <% else %>
-                <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=60x60", class: "avatar"%>
-              <% end %>
-							<%= user.firstname + " " + user.lastname %>
-              <%= button_to('Delete', delete_user_path(user.trip_participations.find_by(trip_id: @trip.id)), method: "post", class: 'delete-user-button') %>
-						</div>
+            <% if user.trip_participations.find_by(trip_id: @trip.id).role != "creator" %>
+  						<div class="user">
+                <% if user.avatar_file_size != nil %>
+                  <%= image_tag user.avatar.url(:common), class: "avatar"%>
+                <% else %>
+                  <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=60x60", class: "avatar"%>
+                <% end %>
+  							<%= user.firstname + " " + user.lastname %>
+                <%= button_to('Delete', delete_user_path(user.trip_participations.find_by(trip_id: @trip.id)), method: "post", class: 'delete-user-button') %>
+  						</div>
+            <% end %>
         	<% end %>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Accept</button>
+        <button type="button" class="btn btn-primary accept-delete-users" data-dismiss="modal">Accept</button>
       </div>
     </div>
   </div>

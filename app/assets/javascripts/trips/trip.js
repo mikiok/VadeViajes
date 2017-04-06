@@ -22,7 +22,33 @@ $(document).ready( function(){
 	document.getElementById("add-location").addEventListener("click", function(){
 		$('.new-location-modal').modal("hide");
 	});
-	filterUsers();
+
+
+	document.getElementsByClassName("addUser")[0].addEventListener('click', function(){
+		$('.add-user-modal').modal("show");
+	});
+
+	document.getElementsByClassName("accept-delete-users")[0].addEventListener('click', function(){
+		window.location.reload();
+	});
+
+	document.getElementsByClassName("accept-add-users")[0].addEventListener('click', function(){
+		window.location.reload();
+	});
+
+	document.getElementsByClassName("deleteUser")[0].addEventListener('click', function(){
+		$('.delete-user-modal').modal("show");
+	});
+
+	$(".add-user-button").click(function () {
+    $.notify("User added", "success");
+  });
+	if(document.getElementsByClassName("filtered-users")[1].innerHTML != ""){
+	  $(".delete-user-button").click(function (){
+	    $.notify("User deleted", "success");
+	  });
+	 }
+	//filterUsers();
 });
 initLocationsMap();
 
@@ -39,7 +65,7 @@ function filterUsers() {
 
 		if(http.readyState == 4){
 			var users = JSON.parse(http.response);
-			printUsers(users);
+			//printUsers(users);
 		}
 	};
 	http.send();

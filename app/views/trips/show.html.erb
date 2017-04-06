@@ -37,12 +37,14 @@
 			      </div>
 			    </div>
 	      <% end %>
-	      <button class="addUser">
-	      	<i class="fa fa-plus"></i>
-	      </button>
-	      <button class="deleteUser">
-	      	<i class="fa fa-close"></i>
-	      </button>
+	      <% if @current_user.trip_participations.find_by(trip_id: @trip.id).role == "creator" %>
+		      <button class="addUser">
+		      	<i class="fa fa-plus"></i>
+		      </button>
+		      <button class="deleteUser">
+		      	<i class="fa fa-close"></i>
+		      </button>
+		    <% end %>
 			</div>
 			<div id="mapContainer">
 				<div id="mapHeader">
@@ -86,17 +88,6 @@
 				  </div>
 				<% end %>
 			</div>
-
-			<script type="text/javascript">
-				document.getElementsByClassName("addUser")[0].addEventListener('click', function(){
-					$('.add-user-modal').modal("show");
-				});
-
-				document.getElementsByClassName("deleteUser")[0].addEventListener('click', function(){
-					$('.delete-user-modal').modal("show");
-				});
-			</script>
-
 		</div>
 
 		<%= render 'locations/new_location' %>
@@ -109,3 +100,4 @@
 
 <%= javascript_include_tag 'trips/trip'%>
 <%= javascript_include_tag 'channels/rooms'%>
+<%= javascript_include_tag 'notify'%>

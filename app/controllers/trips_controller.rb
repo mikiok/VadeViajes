@@ -65,7 +65,6 @@ class TripsController < ApplicationController
 		tripParticipation.user = User.find(params[:format])
 		tripParticipation.trip = Trip.find(params[:id])
 		tripParticipation.save
-		redirect_to "/trips/#{params[:id]}"
 	end
 
 	def delete_user_from_trip

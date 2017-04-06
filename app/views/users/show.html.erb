@@ -12,7 +12,7 @@
 	        <% else %>
 	          <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=250x250", class: "avatar", id: "avatar" %>
 	        <% end %>
-	        <% if @current_user == @user %>
+	        <% if @user == @current_user %>
 	        	<%= form_for @user, url: "/user/upload", id: "myForm", method: "post" do |f| %>
 						  <%= f.file_field :avatar, id: "upload-avatar", class: "btn btn-default btn-file"%>
 						<% end %>
@@ -26,16 +26,118 @@
 		      	<br>
 		      </div>
 		      <div id="trips">
-		      	<% if @user.trips.count()==1 %>
-		      		<%= @user.trips.count() %> trip done
-		      	<% else %>
-		      		<%= @user.trips.count() %> trips done
-		      	<% end %>
+		      	<button class="trips-done selected">
+		      		<span><i class="fa fa-check fa-3x"></i></span>
+		      		Trips done
+		      		<%= @user.trips.where("enddate < ?", Date.today).count() %>
+		      	</button>
+		      	<button class="trips-doing">
+		      		<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+							<span class="sr-only">Loading...</span>
+		      		Trips doing
+		      		<%= @user.trips.where("enddate > ? AND initdate < ?", Date.today, Date.today).count() %>
+		      	</button>
+		      	<button class="trips-todo" aria-pressed="true">
+		      		<i class="fa fa-tasks fa-3x" aria-hidden="true"></i>
+		      		Trips to do
+		      		<%= @user.trips.where("initdate > ?", Date.today).count()%>
+		      	</button>
 		      </div>
 		     </div>
 			</div>
+
+
+
+
+			<ul class="trips-done-list" style="display: block">
+	      <% @user.trips.where("enddate < ?", Date.today).each do |trip| %>
+	        <li>
+	          <div class="trip">
+	            <div class="trip-logo">
+	              <% if trip.logo_file_name == nil %>
+	                <a href="/trips/<%= trip.id %>"><img src="/trip-default-logo.png" class="trip-logo"></a>
+	              <% else %>
+	                <%= image_tag trip.logo.url(:thumb)%> 
+	              <% end %>
+	            </div>
+	            <div class="trip-info">
+	              <%= trip.name %> <br>
+	              <% trip.users.each do |user| %>
+	                <% if user.avatar_file_size != nil %>
+	                  <%= image_tag user.avatar.url(:common), class: "avatar"%>
+	                <% else %>
+	                  <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=30x30", class: "avatar"%>
+	                <% end %>
+	              <% end %> <br>
+	              Description: 
+	              <%= trip.description %> 
+	            </div>
+	          </div>
+	        </li>
+	      <% end %>
+	    </ul>
+
+	    <ul class="trips-doing-list" style="display: none">
+	      <% @user.trips.where("enddate >= ? AND initdate <= ?", Date.today, Date.today).each do |trip| %>
+	        <li>
+	          <div class="trip">
+	            <div class="trip-logo">
+	              <% if trip.logo_file_name == nil %>
+	                <a href="/trips/<%= trip.id %>"><img src="/trip-default-logo.png" class="trip-logo"></a>
+	              <% else %>
+	                <%= image_tag trip.logo.url(:thumb)%> 
+	              <% end %>
+	            </div>
+	            <div class="trip-info">
+	              <%= trip.name %> <br>
+	              <% trip.users.each do |user| %>
+	                <% if user.avatar_file_size != nil %>
+	                  <%= image_tag user.avatar.url(:common), class: "avatar"%>
+	                <% else %>
+	                  <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=30x30", class: "avatar"%>
+	                <% end %>
+	              <% end %> <br>
+	              Description: 
+	              <%= trip.description %> 
+	            </div>
+	          </div>
+	        </li>
+	      <% end %>
+	    </ul>
+
+	    <ul class="trips-todo-list" style="display: none">
+	      <% @user.trips.where("initdate > ?", Date.today).each do |trip| %>
+	        <li>
+	          <div class="trip">
+	            <div class="trip-logo">
+	              <% if trip.logo_file_name == nil %>
+	                <a href="/trips/<%= trip.id %>"><img src="/trip-default-logo.png" class="trip-logo"></a>
+	              <% else %>
+	                <%= image_tag trip.logo.url(:thumb)%> 
+	              <% end %>
+	            </div>
+	            <div class="trip-info">
+	              <%= trip.name %> <br>
+	              <% trip.users.each do |user| %>
+	                <% if user.avatar_file_size != nil %>
+	                  <%= image_tag user.avatar.url(:common), class: "avatar"%>
+	                <% else %>
+	                  <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=30x30", class: "avatar"%>
+	                <% end %>
+	              <% end %> <br>
+	              Description: 
+	              <%= trip.description %> 
+	            </div>
+	          </div>
+	        </li>
+	      <% end %>
+	    </ul>
+
+
+
 		</div>
 	</div>
+
 <% else %>
 	<%= render :file => 'public/404.html' %>
 <% end %>

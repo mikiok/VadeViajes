@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
 	def index
 		if user_signed_in?
+			@trip = Trip.new
 			render 'index'
 		else
 			render 'static_pages/landing'

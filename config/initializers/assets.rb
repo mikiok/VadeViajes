@@ -17,6 +17,7 @@ Rails.application.config.assets.precompile += %w( navbar.js )
 Rails.application.config.assets.precompile += %w( channels/rooms.js )
 Rails.application.config.assets.precompile += %w( users/user.js )
 Rails.application.config.assets.precompile += %w( users/show.js )
+Rails.application.config.assets.precompile += %w( notify.js )
 
 Rails.application.config.assets.precompile += %w( static_pages.css )
 Rails.application.config.assets.precompile += %w( registrations.css )

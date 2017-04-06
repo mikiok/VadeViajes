@@ -39,6 +39,21 @@
       font-weight: 600;
     }
   }
+  .added-user-button {
+    display: block;
+    background-color: #4c90ff;
+    width: 120px;
+    height: 40px;
+    color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 5px;
+    span{
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+  }
   .delete-user-button {
     display: block;
     background-color: $color-dark;

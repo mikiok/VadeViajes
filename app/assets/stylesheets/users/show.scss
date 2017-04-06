@@ -3,17 +3,17 @@
 }
 #content{
   margin: 0 auto;
+  width: 80%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  max-width: 1500px;
   background-color: #eff0f2;
   border-radius: 20px;
   padding: 15px;
 
   #user{
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     min-height: 250px;
     width: 100%;
@@ -32,7 +32,74 @@
       font-size: 35px;
     }
     #trips{
-      
+      margin-top: 50px;
+      font-size: 17px;
+      font-weight: 600;
+      display: flex;
+      .trips-done{
+        margin: 10px;
+        display: flex;
+        height: 90px;
+        width: 130px;
+        border-radius: 10px;
+        span{
+          color: green;
+        }
+      }
+      .trips-doing{
+        margin: 10px;
+        display: flex;
+        height: 90px;
+        width: 130px;
+        border-radius: 10px;
+      }
+      .trips-todo{
+        margin: 10px;
+        display: flex;
+        height: 90px;
+        width: 130px;
+        border-radius: 10px;
+      }
+      button.selected{
+        background: #a2a5aa;
+        text-decoration: none;
+      }
+
+    }
+  }
+  ul{
+      border-radius: 10px;
+      width: 80%;
+
+      margin: 10px auto;
+      background-color: #b0b3b7;
+    li{
+      list-style:none;
+      margin: 30px 30px 30px 30px;
+    }
+    li .trip{
+      display: flex;
+
+      .trip-logo{
+        float: left;
+        height: 100px;
+        width: 100px;
+      }
+      .trip-info{
+        font-weight: 500px;
+        font-size: 16px;
+        justify-content: space-around;
+        text-align: justify;
+        display:inline-block;
+        width: 70%;
+        margin-left: 15px;
+        margin-right: 60px;
+        .avatar{
+          border-radius: 50%;
+          height: 30px;
+          width: 30px;
+        }
+      }
     }
   }
 }
