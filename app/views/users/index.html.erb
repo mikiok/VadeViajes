@@ -21,9 +21,11 @@
 	      <div id="info">
 		      <div id="userName">
 		      	<%= @current_user.firstname %>
-		      	<br>
 		      	<%= @current_user.lastname %>
-		      	<br>
+		      	<button type="button" class="new-trip" data-toggle="modal" data-target="#exampleModal">
+						  <span><i class="fa fa-plus fa-3x"></i></span>
+		      		New trip
+						</button>
 		      </div>
 		      <div id="trips">
 		      	<button class="trips-done selected">
@@ -35,7 +37,7 @@
 		      		<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
 							<span class="sr-only">Loading...</span>
 		      		Trips doing
-		      		<%= @current_user.trips.where("enddate > ? AND initdate < ?", Date.today, Date.today).count() %>
+		      		<%= @current_user.trips.where("enddate >= ? AND initdate <= ?", Date.today, Date.today).count() %>
 		      	</button>
 		      	<button class="trips-todo" aria-pressed="true">
 		      		<i class="fa fa-tasks fa-3x" aria-hidden="true"></i>
@@ -45,9 +47,6 @@
 		      </div>
 		     </div>
 			</div>
-
-
-
 
 			<ul class="trips-done-list" style="display: block">
 	      <% @current_user.trips.where("enddate < ?", Date.today).each do |trip| %>
@@ -143,19 +142,14 @@
 			<div class="modal-content">
 				<div class="modal-body new-trip-modal-body">
 					<%= form_for [@current_user, @trip], url: trips_path, method: "post" do |f| %>
-						<%= f.label :name %>
-						<%= f.text_field :name %><br />
+						<%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "Title"  %><br />
 
-						<%= f.label :description %>
-						<%= f.text_field :description %><br />
-
-						<%= f.label :initdate %>
-						<%= f.date_field :initdate %><br />
-
-						<%= f.label :enddate %>
-						<%= f.date_field :enddate %><br />
-
-						<%= f.submit "Create" %>
+						<%= f.text_field :description, autofocus: true, class: "form-control", placeholder: "Description"%><br />
+						<h4>Start date:
+						<%= f.date_field :initdate%><br /></h4>
+						<h4>End date: 
+						<%= f.date_field :enddate, min: Date.today %><br /></h4>
+						<%= f.submit "Create", class: "btn btn-primary btn-lg" %>
 					<% end %>
 				</div>
 			</div>

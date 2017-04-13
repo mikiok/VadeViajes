@@ -80,6 +80,13 @@
   background-color: #eff0f2;
   border-radius: 20px;
   padding: 15px;
+  #tripInformation{
+    font: bold 34px "Century Schoolbook", Georgia, Times, serif;
+    color: #333;
+    line-height: 90%;
+    margin: .2em 0 .4em 0;
+    letter-spacing: -2px;
+  }
 
   #users{
     display: flex;
@@ -87,6 +94,7 @@
     min-height: 60px;
     width: 100%;
     margin: 20px 20px 30px 30px;
+    justify-content: center;
     #user{
       text-align: center;
       width: 100px;

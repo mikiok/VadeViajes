@@ -5,20 +5,14 @@
 
 <% if @current_user.trips.include? @trip %>
 	<div class="body-content">
-		<div id="tripInformation" data-id=<%= @trip.id %>>
-			<h2> Trip: <%=@trip.name %></h2>
-
-			<!--<p>
-			  <strong>Init Date:</strong>
-			  <%= @trip.initdate %>
-			</p>
-
-			<p>
-			  <strong>End Date:</strong>
-			  <%= @trip.enddate %>
-			</p>-->
-		</div>
 		<div id="content">
+			<div id="tripInformation" data-id=<%= @trip.id %>>
+				<h1>
+					<%=@trip.name %>
+				  (<%= @trip.initdate.strftime("%d/%m/%Y") %> - 
+				  <%= @trip.enddate.strftime("%d/%m/%Y") %>)
+				</h1>
+			</div>
 			<div id="users">
 				<% @trip.users.each do |user| %>
 					<div id="user">

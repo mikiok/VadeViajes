@@ -2,7 +2,6 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="delete-user-modal-body modal-body">
-        <input type="text" class="form-control search-users" placeholder="Search" autocomplete="off" autofocus="true">
         <div class="filtered-users">
         	<% @trip.users.each do |user| %>
             <% if user.trip_participations.find_by(trip_id: @trip.id).role != "creator" %>
