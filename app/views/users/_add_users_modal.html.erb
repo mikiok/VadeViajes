@@ -11,7 +11,9 @@
               <% else %>
                 <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=60x60", class: "avatar"%>
               <% end %>
-							<%= user.firstname + " " + user.lastname %>
+              <div class="full-name">
+						    <%= user.firstname + " " + user.lastname %>
+              </div>
               <div class="add-button">
                 <% if !@trip.users.include? user %>
                   <%= button_to('Add', add_user_path(@trip.id, user.id), method: "post", class: 'add-user-button') %>

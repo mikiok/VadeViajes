@@ -40,15 +40,18 @@ $(document).ready( function(){
 		$('.delete-user-modal').modal("show");
 	});
 
-	$(".add-user-button").click(function () {
-    $.notify("User added", "success");
+
+	Array.from(document.getElementsByClassName("add-user-button")).forEach(function(element) {
+    element.addEventListener('click', function(){
+	    $.notify("User added", "success");
+	  });
   });
-	if(document.getElementsByClassName("filtered-users")[1].innerHTML != ""){
-	  $(".delete-user-button").click(function (){
+
+  Array.from(document.getElementsByClassName("delete-user-button")).forEach(function(element) {
+    element.addEventListener('click', function(){
 	    $.notify("User deleted", "success");
 	  });
-	 }
-	//filterUsers();
+  });
 });
 initLocationsMap();
 
