@@ -11,6 +11,7 @@ function getUsers() {
 
 		if(http.readyState == 4){
 			var users = JSON.parse(http.response);
+			var currentUrl;
 
 			$( ".form-control" ).autocomplete({
 				autoFocus: true,
@@ -26,7 +27,8 @@ function getUsers() {
 						return {
 							label: value.fullname,
 							value: value.id,
-							avatar: avatar
+							avatar: avatar,
+							url: "/users/" + value.id
 						}
 					}));
 					var matcher = new RegExp( $.ui.autocomplete.escapeRegex( request.term ), "i" );
@@ -36,7 +38,7 @@ function getUsers() {
 	        }).slice(0, 6));
 				},
 				focus: function(event, ui) {
-						
+						currentUrl = ui.item.url;
 						return false;
 				},
 				// Once a value in the drop down list is selected, do the following:
@@ -53,7 +55,13 @@ function getUsers() {
 						.append("<a href='/users/" + item.value + "'><img style='width:40px;height:40px' src='" +
 								item.avatar + "' /> " + item.label + "</a>")  
 						.appendTo( ul );  
-			 }; 
+			};
+
+			$(".form-control").keydown(function(event){
+		    if(event.keyCode == 13) {
+        	window.location.href = currentUrl;
+		    }
+		 }); 
 		}
 	};
 	http.send();

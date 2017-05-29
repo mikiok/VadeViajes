@@ -7,6 +7,8 @@ class Trip < ApplicationRecord
 	has_attached_file :logo, styles: {:medium => "300x300>", 
   		:small => "40x40>", :thumb => "100x100>", :big => "500x500>"}
 
+  validates_presence_of :name, :description, :initdate, :enddate
+
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
 
   def self.validateDates trip, newLocation

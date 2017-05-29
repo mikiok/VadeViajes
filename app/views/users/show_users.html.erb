@@ -4,7 +4,11 @@
 	<% @searchedUsers.each do |user| %>
 		<%if (user.id != @current_user.id)%>
 			<li>
-				<%= image_tag user.avatar.url(:thumb)%> 
+				<% if user.avatar_file_size != nil %>
+	        <%= image_tag user.avatar.url(:thumb)%>
+	      <% else %>
+	        <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=100x100"%>
+	      <% end %>
 				<%= user.firstname %> <%= user.lastname %><br>
 				<hr>
 			</li>
