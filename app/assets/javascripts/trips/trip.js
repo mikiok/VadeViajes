@@ -40,6 +40,21 @@ $(document).ready( function(){
 		$('.delete-user-modal').modal("show");
 	});
 
+	const addbuttons = document.querySelectorAll(".add-user-button");
+	addbuttons.forEach(button => button.addEventListener('click', changeAddButton))
+	const deletebuttons = document.querySelectorAll(".delete-user-button");
+	deletebuttons.forEach(button => button.addEventListener('click', changeDeleteButton))
+
+	function changeAddButton(e){
+		this.classList.add("added-user-button");
+		this.value = "User added";
+	}
+
+	function changeDeleteButton(e){
+		this.classList.add("deleted-user-button");
+		this.value = "User deleted";
+	}
+
 
 	Array.from(document.getElementsByClassName("add-user-button")).forEach(function(element) {
     element.addEventListener('click', function(){

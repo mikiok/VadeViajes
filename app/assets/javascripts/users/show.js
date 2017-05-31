@@ -19,3 +19,7 @@ document.getElementById('upload-avatar').addEventListener('change', function(eve
 
 	$(".edit_user").submit();
 });
+
+document.querySelector(".trip-initdate").addEventListener('change', function(){
+  document.querySelector(".trip-enddate").setAttribute("min", this.value);
+});

@@ -156,9 +156,9 @@
 
 						<%= f.text_field :description, autofocus: true, class: "form-control", placeholder: "Description"%><br />
 						<h4>Start date:
-						<%= f.date_field :initdate%><br /></h4>
+						<%= f.date_field :initdate, class:"trip-initdate", min:Date.today %><br /></h4>
 						<h4>End date: 
-						<%= f.date_field :enddate, min: Date.today %><br /></h4>
+						<%= f.date_field :enddate, class:"trip-enddate", min: Date.today %><br /></h4>
 						<%= f.submit "Create", class: "btn btn-primary btn-lg" %>
 					<% end %>
 				</div>

@@ -51,6 +51,7 @@
     cursor: pointer;
     overflow: hidden;
     border-radius: 5px;
+    transition: all 0.3s;
     span{
       font-size: 16px;
       text-transform: uppercase;
@@ -71,6 +72,10 @@
       text-transform: uppercase;
       font-weight: 600;
     }
+  }
+  .deleted-user-button {
+    background-color: #4c90ff;
+    transition: all 0.3s;
   }
 }
 #content{
