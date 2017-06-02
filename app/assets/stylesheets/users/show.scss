@@ -29,37 +29,56 @@
       }
       .trips-done{
         border: 0px;
-        border-top: 1px solid red;
+        border-radius: 5px;
+        -webkit-box-shadow: 0 8px 6px -6px #7c7c7c;
+        -moz-box-shadow: 0 8px 6px -6px #7c7c7c;
+        box-shadow: 0 8px 6px -6px #7c7c7c;
+        margin-bottom: 5px;
         display: flex;
         height: 60px;
         width: 250px;
         align-items: center;
-        background-color: #3f5eff;
+        background-color: #009ac9;
+        color: white;
+        justify-content: center;
         span{
           color: green;
         }
       }
       .trips-doing{
         border: 0px;
-        border-top: 1px solid red;
+        border-radius: 5px;
+        -webkit-box-shadow: 0 8px 6px -6px #7c7c7c;
+        -moz-box-shadow: 0 8px 6px -6px #7c7c7c;
+        box-shadow: 0 8px 6px -6px #7c7c7c;
+        margin-bottom: 5px;
         display: flex;
         height: 60px;
         width: 250px;
         align-items: center;
-        background-color: #3f5eff;
+        background-color: #009ac9;
+        color: white;
+        justify-content: center;
       }
       .trips-todo{
         border: 0px;
-        border-top: 1px solid red;
+        border-radius: 5px;
+        -webkit-box-shadow: 0 8px 6px -6px #7c7c7c;
+        -moz-box-shadow: 0 8px 6px -6px #7c7c7c;
+        box-shadow: 0 8px 6px -6px #7c7c7c;
+        margin-bottom: 5px;
         display: flex;
         height: 60px;
         width: 250px;
         align-items: center;
-        background-color: #3f5eff;
+        background-color: #009ac9;
+        color: white;
+        justify-content: center;
       }
       button.selected{
-        background: #1027a0;
-        color: white;
+        background: white;
+        color: #009ac9;
+        border: 1px solid #009ac9;
         text-decoration: none;
         transition: all 0.4s;
       }
@@ -109,11 +128,10 @@
           font-weight: 500px;
           font-size: 16px;
           justify-content: space-around;
-          text-align: justify;
           display:inline-block;
-          width: 70%;
+          width: 100%;
           margin-left: 15px;
-          margin-right: 60px;
+          margin-right: 15px;
           .trip-name{
             font-weight: 600;
             font-size: 18px;
@@ -122,7 +140,6 @@
           }
           .trip-people{
             display: flex;
-            align-items: center;
           }
           .avatar{
             border-radius: 50%;
@@ -138,10 +155,12 @@
     font-size: 35px;
     display: flex;
     .new-trip{
-      font-size: 17px;
-      font-weight: 600;
+      color: white;
+      background-color: green;
+      font-size: 24px;
+      font-weight: 700;
       height: 50px;
-      width: 150px;
+      width: 140px;
       align-items: center;
       margin-left: 20px;
       display: flex;

@@ -23,7 +23,7 @@
 	      	<button class="trips-doing selected">
 	      		<i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>
 						<span class="sr-only">Loading...</span>
-	      		Trips on board
+	      		Trips on going
 	      		<%= @current_user.trips.where("enddate >= ? AND initdate <= ?", Date.today, Date.today).count() %>
 	      	</button>
 
@@ -46,7 +46,7 @@
 	      	<%= @current_user.firstname %>
 	      	<%= @current_user.lastname %>
 	      	<button type="button" class="new-trip" data-toggle="modal" data-target="#exampleModal">
-					  <span><i class="fa fa-plus fa-3x"></i></span>
+					  <span><i class="fa fa-plus fa-1x"></i></span>
 	      		New trip
 					</button>
 	      </div>
@@ -75,8 +75,10 @@
 								          <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=60x60", class: "avatar"%>
 								        <% end %>
 								      </a>
-			              <% end %> <br>
-			              <%= trip.users.count %> people going 
+			              <% end %>
+			              <%= trip.users.count %>
+		              	<%if trip.users.count > 1%> people going
+		              	<% else %> person going<%end%> 
 			            </div>
 			          </div>
 			        </li>
@@ -110,7 +112,9 @@
 									        <% end %>
 									      </a>
 				              <% end %>
-			              	<%= trip.users.count %> people going 
+				              <%= trip.users.count %>
+			              	<%if trip.users.count > 1%> people going
+			              	<% else %> person going <%end%>
 			              </div>
 			            </div>
 			          </div>
@@ -143,8 +147,10 @@
 								          <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=60x60", class: "avatar"%>
 								        <% end %>
 								      </a>
-			              <% end %> <br>
-			              <%= trip.users.count %> people going 
+			              <% end %>
+			              <%= trip.users.count %>
+		              	<%if trip.users.count > 1%> people going
+		              	<% else %> person going<%end%>  
 			            </div>
 			          </div>
 			        </li>

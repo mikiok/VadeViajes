@@ -19,7 +19,7 @@
 					  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 					  	<div class="tittle">
 							  	<img src="/googleMarker.png" class="default-marker">
-							    Locations( <%= @trip.initdate.strftime('%d-%m-%Y') %> - <%= @trip.enddate.strftime('%d-%m-%Y') %> )
+							    <%= @trip.name %>( <%= @trip.initdate.strftime('%d-%m-%Y') %> - <%= @trip.enddate.strftime('%d-%m-%Y') %> )
 						  </div>
 					    <span class="caret"></span>
 					  </button>
