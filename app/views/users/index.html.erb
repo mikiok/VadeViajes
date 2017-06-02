@@ -18,133 +18,141 @@
 						<% end %>
 	        <% end %>
 	      </div>
-	      <div id="info">
-		      <div id="userName">
-		      	<%= @current_user.firstname %>
-		      	<%= @current_user.lastname %>
-		      	<button type="button" class="new-trip" data-toggle="modal" data-target="#exampleModal">
-						  <span><i class="fa fa-plus fa-3x"></i></span>
-		      		New trip
-						</button>
-		      </div>
-		      <div id="trips">
+	      <div id="trips">
 
-		      	<button class="trips-doing selected">
-		      		<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
-							<span class="sr-only">Loading...</span>
-		      		Trips doing
-		      		<%= @current_user.trips.where("enddate >= ? AND initdate <= ?", Date.today, Date.today).count() %>
-		      	</button>
+	      	<button class="trips-doing selected">
+	      		<i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>
+						<span class="sr-only">Loading...</span>
+	      		Trips on board
+	      		<%= @current_user.trips.where("enddate >= ? AND initdate <= ?", Date.today, Date.today).count() %>
+	      	</button>
 
-						<button class="trips-todo">
-		      		<i class="fa fa-tasks fa-3x"></i>
-		      		Trips to do
-		      		<%= @current_user.trips.where("initdate > ?", Date.today).count()%>
-		      	</button>
+					<button class="trips-todo">
+	      		<i class="fa fa-tasks fa-2x"></i>
+	      		Trips to do
+	      		<%= @current_user.trips.where("initdate > ?", Date.today).count()%>
+	      	</button>
 
-		      	<button class="trips-done">
-		      		<span><i class="fa fa-check fa-3x"></i></span>
-		      		Trips done
-		      		<%= @current_user.trips.where("enddate < ?", Date.today).count() %>
-		      	</button>
-		    
-		      </div>
-		     </div>
+	      	<button class="trips-done">
+	      		<span><i class="fa fa-check fa-2x"></i></span>
+	      		Trips done
+	      		<%= @current_user.trips.where("enddate < ?", Date.today).count() %>
+	      	</button>
+	    
+	      </div>
 			</div>
+			<div id="info">
+	      <div id="userName">
+	      	<%= @current_user.firstname %>
+	      	<%= @current_user.lastname %>
+	      	<button type="button" class="new-trip" data-toggle="modal" data-target="#exampleModal">
+					  <span><i class="fa fa-plus fa-3x"></i></span>
+	      		New trip
+					</button>
+	      </div>
 
-			<ul class="trips-doing-list" style="display: block">
-	      <% @current_user.trips.where("enddate >= ? AND initdate <= ?", Date.today, Date.today).each do |trip| %>
-	        <li>
-	          <div class="trip">
-	            <div class="trip-logo">
-	              <% if trip.logo_file_name == nil %>
-	                <a href="/trips/<%= trip.id %>"><img src="/trip-default-logo.png" class="trip-logo"></a>
-	              <% else %>
-	                <%= image_tag trip.logo.url(:thumb)%> 
-	              <% end %>
-	            </div>
-	            <div class="trip-info">
-	              <%= trip.name %> <br>
-	              <% trip.users.each do |user| %>
-	                <a href="/users/<%= user.id %>"  title=<%= user.firstname %><%= user.lastname %> >
-										<% if user.avatar_file_size != nil %>
-						          <%= image_tag user.avatar.url(:common), class: "avatar"%>
-						        <% else %>
-						          <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=60x60", class: "avatar"%>
-						        <% end %>
-						      </a>
-	              <% end %> <br>
-	              Description: 
-	              <%= trip.description %> 
-	            </div>
-	          </div>
-	        </li>
-	      <% end %>
-	    </ul>
+	      <div class="tripscontainer-doing" style="display: block">
+					<ul class="trips-doing-list">
+			      <% @current_user.trips.where("enddate >= ? AND initdate <= ?", Date.today, Date.today).each do |trip| %>
+			        <li>
+			          <div class="trip">
+			            <div class="trip-logo">
+			              <% if trip.logo_file_name == nil %>
+			                <a href="/trips/<%= trip.id %>"><img src="/trip-default-logo.jpg" class="trip-logo"></a>
+			              <% else %>
+			                <%= image_tag trip.logo.url(:thumb)%> 
+			              <% end %>
+			            </div>
+			            <div class="trip-info">
+			              <div class="trip-name">
+			              	<%= trip.name %>
+			              </div>
+			              <% trip.users.each do |user| %>
+			                <a href="/users/<%= user.id %>"  title=<%= user.firstname %><%= user.lastname %> >
+												<% if user.avatar_file_size != nil %>
+								          <%= image_tag user.avatar.url(:common), class: "avatar"%>
+								        <% else %>
+								          <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=60x60", class: "avatar"%>
+								        <% end %>
+								      </a>
+			              <% end %> <br>
+			              <%= trip.users.count %> people going 
+			            </div>
+			          </div>
+			        </li>
+			      <% end %>
+			    </ul>
+			  </div>
 
-			<ul class="trips-todo-list" style="display: none">
-	      <% @current_user.trips.where("initdate > ?", Date.today).each do |trip| %>
-	        <li>
-	          <div class="trip">
-	            <div class="trip-logo">
-	              <% if trip.logo_file_name == nil %>
-	                <a href="/trips/<%= trip.id %>"><img src="/trip-default-logo.png" class="trip-logo"></a>
-	              <% else %>
-	                <%= image_tag trip.logo.url(:thumb)%> 
-	              <% end %>
-	            </div>
-	            <div class="trip-info">
-	              <%= trip.name %> <br>
-	              <% trip.users.each do |user| %>
-	                <a href="/users/<%= user.id %>"  title=<%= user.firstname %><%= user.lastname %> >
-										<% if user.avatar_file_size != nil %>
-						          <%= image_tag user.avatar.url(:common), class: "avatar"%>
-						        <% else %>
-						          <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=60x60", class: "avatar"%>
-						        <% end %>
-						      </a>
-	              <% end %> <br>
-	              Description: 
-	              <%= trip.description %> 
-	            </div>
-	          </div>
-	        </li>
-	      <% end %>
-	    </ul>
+				<div class="tripscontainer-todo" style="display: none">
+					<ul class="trips-todo-list">
+			      <% @current_user.trips.where("initdate > ?", Date.today).each do |trip| %>
+			        <li>
+			          <div class="trip">
+			            <div class="trip-logo">
+			              <% if trip.logo_file_name == nil %>
+			                <a href="/trips/<%= trip.id %>"><img src="/trip-default-logo.jpg" class="trip-logo"></a>
+			              <% else %>
+			                <%= image_tag trip.logo.url(:thumb)%>
+			              <% end %>
+			            </div>
+			            <div class="trip-info">
+			              <div class="trip-name">
+			              	<%= trip.name %>
+			              </div>
+			              <div class="trip-people">
+				              <% trip.users.each do |user| %>
+				                <a href="/users/<%= user.id %>"  title=<%= user.firstname %><%= user.lastname %> >
+													<% if user.avatar_file_size != nil %>
+									          <%= image_tag user.avatar.url(:common), class: "avatar"%>
+									        <% else %>
+									          <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=60x60", class: "avatar"%>
+									        <% end %>
+									      </a>
+				              <% end %>
+			              	<%= trip.users.count %> people going 
+			              </div>
+			            </div>
+			          </div>
+			        </li>
+			      <% end %>
+			    </ul>
+			  </div>
 
-	    <ul class="trips-done-list" style="display: none">
-	      <% @current_user.trips.where("enddate < ?", Date.today).each do |trip| %>
-	        <li>
-	          <div class="trip">
-	            <div class="trip-logo">
-	              <% if trip.logo_file_name == nil %>
-	                <a href="/trips/<%= trip.id %>"><img src="/trip-default-logo.png" class="trip-logo"></a>
-	              <% else %>
-	                <%= image_tag trip.logo.url(:thumb)%> 
-	              <% end %>
-	            </div>
-	            <div class="trip-info">
-	              <%= trip.name %> <br>
-	              <% trip.users.each do |user| %>
-	                <a href="/users/<%= user.id %>"  title=<%= user.firstname %><%= user.lastname %> >
-										<% if user.avatar_file_size != nil %>
-						          <%= image_tag user.avatar.url(:common), class: "avatar"%>
-						        <% else %>
-						          <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=60x60", class: "avatar"%>
-						        <% end %>
-						      </a>
-	              <% end %> <br>
-	              Description: 
-	              <%= trip.description %> 
-	            </div>
-	          </div>
-	        </li>
-	      <% end %>
-	    </ul>
-
-
-
-		</div>
+				<div class="tripscontainer-done" style="display: none">
+			    <ul class="trips-done-list">
+			      <% @current_user.trips.where("enddate < ?", Date.today).each do |trip| %>
+			        <li>
+			          <div class="trip">
+			            <div class="trip-logo">
+			              <% if trip.logo_file_name == nil %>
+			                <a href="/trips/<%= trip.id %>"><img src="/trip-default-logo.jpg" class="trip-logo"></a>
+			              <% else %>
+			                <%= image_tag trip.logo.url(:thumb)%> 
+			              <% end %>
+			            </div>
+			            <div class="trip-info">
+			              <div class="trip-name">
+			              	<%= trip.name %>
+			              </div>
+			              <% trip.users.each do |user| %>
+			                <a href="/users/<%= user.id %>"  title=<%= user.firstname %><%= user.lastname %> >
+												<% if user.avatar_file_size != nil %>
+								          <%= image_tag user.avatar.url(:common), class: "avatar"%>
+								        <% else %>
+								          <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=60x60", class: "avatar"%>
+								        <% end %>
+								      </a>
+			              <% end %> <br>
+			              <%= trip.users.count %> people going 
+			            </div>
+			          </div>
+			        </li>
+			      <% end %>
+			    </ul>
+			  </div>
+	    </div>
+	  </div>
 	</div>
 
 	<div class="modal new-trip-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

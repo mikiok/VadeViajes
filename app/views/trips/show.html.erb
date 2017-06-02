@@ -7,38 +7,11 @@
 	<div class="body-content">
 		<div id="content">
 			<div id="tripInformation" data-id=<%= @trip.id %>>
-				<h1>
+				<!--<h1>
 					<%=@trip.name %>
 				  (<%= @trip.initdate.strftime("%d/%m/%Y") %> - 
 				  <%= @trip.enddate.strftime("%d/%m/%Y") %>)
-				</h1>
-			</div>
-			<div id="users">
-				<% @trip.users.each do |user| %>
-					<div id="user">
-						<div id="userImage">
-							<a href="/users/<%= user.id %>">
-								<% if user.avatar_file_size != nil %>
-				          <%= image_tag user.avatar.url(:common), class: "avatar"%>
-				        <% else %>
-				          <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=60x60", class: "avatar"%>
-				        <% end %>
-				      </a>
-			      </div>
-			      <div id="userName">
-			      	<%= user.firstname %>
-			      	<%= user.lastname.split(" ")[0] %>
-			      </div>
-			    </div>
-	      <% end %>
-	      <% if @current_user.trip_participations.find_by(trip_id: @trip.id).role == "creator" %>
-		      <button class="addUser">
-		      	<i class="fa fa-plus"></i>
-		      </button>
-		      <button class="deleteUser">
-		      	<i class="fa fa-close"></i>
-		      </button>
-		    <% end %>
+				</h1>-->
 			</div>
 			<div id="mapContainer">
 				<div id="mapHeader">
@@ -70,6 +43,25 @@
 			</div>
 
 			<div id="chatContainer">
+				<div class="users">
+					<% @trip.users.each do |user| %>
+            <a href="/users/<%= user.id %>"  title=<%= user.firstname %><%= user.lastname %> >
+							<% if user.avatar_file_size != nil %>
+			          <%= image_tag user.avatar.url(:common), class: "avatar"%>
+			        <% else %>
+			          <%= image_tag "https://www.gravatar.com/avatar/0?d=mm&f=y&s=60x60", class: "avatar"%>
+			        <% end %>
+			      </a>
+          <% end %>
+          <% if @current_user.trip_participations.find_by(trip_id: @trip.id).role == "creator" %>
+		      <button class="addUser">
+		      	<i class="fa fa-plus"></i>
+		      </button>
+		      <button class="deleteUser">
+		      	<i class="fa fa-close"></i>
+		      </button>
+		    <% end %>
+				</div>
 				<div id="messages" data-trip-id="<%= @trip.id %>">
 				  <%= render @trip.messages %>
 				</div>

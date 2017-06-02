@@ -1,8 +1,10 @@
 $('button[class*="trips"]').on('click', function(){
   $('button[class*="trips"]').removeClass('selected');
-  var trip = "." + this.className.toString() + "-list";
+  var trip = "." + this.className.toString();
+  trip = trip.split('-')[0] + "container-" + trip.split("-")[1];
+  console.log(trip);
   $(this).addClass('selected');
-  $('ul[class*="list"]').css("display","none");
+  $('div[class*="tripscontainer"]').css("display","none");
   $(trip).css("display","block");
 });
 

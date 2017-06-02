@@ -3,21 +3,17 @@
 }
 #content{
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  background-color: #eff0f2;
+  flex: wrap;
+  justify-content: center;
+  background-color: white;
   border-radius: 20px;
-  padding: 15px;
-
   #user{
-    display: flex;
-    justify-content: center;
+    justify-content: left;
     flex-wrap: wrap;
     min-height: 250px;
-    width: 100%;
-    margin: 20px 20px 30px 30px;
+    width: 250px;
     .btn-file{
       width: 250px;
     }
@@ -25,93 +21,133 @@
       width: 250px;
       height: 250px;
     }
-    #info{
-      margin-left: 20px;
-    }
-    #userName{
-      font-size: 35px;
-      display: flex;
-      .new-trip{
-        font-size: 17px;
-        font-weight: 600;
-        height: 70px;
-        width: 120px;
-        margin-left: 20px;
-        display: flex;
-        border-radius: 10px;
-      }
-    }
     #trips{
-      margin-top: 70px;
       font-size: 17px;
       font-weight: 600;
-      display: flex;
+      .fa{
+        margin-right: 10px;
+      }
       .trips-done{
-        margin: 10px;
+        border: 0px;
+        border-top: 1px solid red;
         display: flex;
-        height: 90px;
-        width: 130px;
-        border-radius: 10px;
+        height: 60px;
+        width: 250px;
+        align-items: center;
+        background-color: #3f5eff;
         span{
           color: green;
         }
       }
       .trips-doing{
-        margin: 10px;
+        border: 0px;
+        border-top: 1px solid red;
         display: flex;
-        height: 90px;
-        width: 130px;
-        border-radius: 10px;
+        height: 60px;
+        width: 250px;
+        align-items: center;
+        background-color: #3f5eff;
       }
       .trips-todo{
-        margin: 10px;
+        border: 0px;
+        border-top: 1px solid red;
         display: flex;
-        height: 90px;
-        width: 130px;
-        border-radius: 10px;
+        height: 60px;
+        width: 250px;
+        align-items: center;
+        background-color: #3f5eff;
       }
       button.selected{
-        background: #a2a5aa;
+        background: #1027a0;
+        color: white;
         text-decoration: none;
+        transition: all 0.4s;
       }
 
     }
   }
-  ul{
-      border-radius: 10px;
-      width: 80%;
-
-      margin: 10px auto;
-      background-color: #cee1ff;
-    li{
-      list-style:none;
-      margin: 30px 30px 30px 30px;
-      border: 1px solid #d2d8e0;
-      padding: 10px;
-      border-radius: 5px;
+  #info{
+    .tripscontainer-todo{
+      width: 100%;
+      padding-left: 0px;
     }
-    li .trip{
+    .tripscontainer-doing{
+      width: 100%;
+      padding-left: 0px;
+    }
+    .tripscontainer-done{
+      width: 100%;
+      padding-left: 0px;
+    }
+    ul{
+      width: 100%;
+      padding-left: 0px;
       display: flex;
+      flex-wrap: wrap;
 
-      .trip-logo{
-        float: left;
-        height: 100px;
-        width: 100px;
+      li{
+        list-style:none;
+        width: 250px;
+        margin: 20px;
+
       }
-      .trip-info{
-        font-weight: 500px;
-        font-size: 16px;
-        justify-content: space-around;
-        text-align: justify;
-        display:inline-block;
-        width: 70%;
-        margin-left: 15px;
-        margin-right: 60px;
-        .avatar{
-          border-radius: 50%;
-          height: 30px;
-          width: 30px;
+      li .trip{
+        width: 250px;
+        border: 2px solid #d5dbe5;
+        border-radius: 10px;
+        -webkit-box-shadow: 0 8px 6px -6px #7c7c7c;
+        -moz-box-shadow: 0 8px 6px -6px #7c7c7c;
+        box-shadow: 0 8px 6px -6px #7c7c7c;
+
+        .trip-logo{
+          float: left;
+          height: 246px;
+          width: 246px;
+          border-radius: 8px;
         }
+        .trip-info{
+          font-weight: 500px;
+          font-size: 16px;
+          justify-content: space-around;
+          text-align: justify;
+          display:inline-block;
+          width: 70%;
+          margin-left: 15px;
+          margin-right: 60px;
+          .trip-name{
+            font-weight: 600;
+            font-size: 18px;
+            color: #777777;
+            margin-bottom: 6px;
+          }
+          .trip-people{
+            display: flex;
+            align-items: center;
+          }
+          .avatar{
+            border-radius: 50%;
+            height: 30px;
+            width: 30px;
+          }
+        }
+      }
+    }
+  }
+  #userName{
+    margin-left: 30px;
+    font-size: 35px;
+    display: flex;
+    .new-trip{
+      font-size: 17px;
+      font-weight: 600;
+      height: 50px;
+      width: 150px;
+      align-items: center;
+      margin-left: 20px;
+      display: flex;
+      border-radius: 10px;
+      .fa{
+        margin-right: 10px;
       }
     }
   }

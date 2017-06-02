@@ -79,15 +79,9 @@
   }
 }
 #content{
-  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
-  max-width: 1500px;
-  background-color: #eff0f2;
-  border-radius: 20px;
-  padding: 15px;
   #tripInformation{
     font: bold 34px "Century Schoolbook", Georgia, Times, serif;
     color: #333;
@@ -231,12 +225,52 @@
   height: 528px;
   border: 3px solid #d0d3db;
   border-radius: 10px;
+  .users{
+    border-radius: 8px;
+    background-color: gray;
+    width: 100%;
+    padding: 10px;
+    .trip-people{
+      display: flex;
+      align-items: center;
+    }
+    .avatar{
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
+    }
+
+    .addUser{
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #2fd620;
+      border: 0px;
+      font-size: 20px;
+      .fa{
+        color: white;
+        display: block;
+      }
+    }
+    .deleteUser{
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: red;
+      border: 0px;
+      font-size: 20px;
+      .fa{
+        color: white;
+        display: block;
+      }
+    }
+  }
   .form-group{
     display: flex;
   }
   #messages {
     margin: 20px;
-    height: 450px;
+    height: 395px;
     overflow: auto;
     text-size-adjust: 90%;
     margin-bottom: 2px solid gray;

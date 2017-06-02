@@ -61,6 +61,7 @@ function initMap() {
 			function placeMarker(location) {
 				removeMarker(marker);
 				marker = new google.maps.Marker({
+					animation: google.maps.Animation.DROP,
 					position: location, 
 					map: map
 				});
@@ -129,6 +130,8 @@ function initLocationsMap() {
 			var locs = JSON.parse(http.response);
 			var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 			var labelIndex = 0;
+			var directionsService = new google.maps.DirectionsService;
+      var directionsDisplay = new google.maps.DirectionsRenderer;
 
 			var locationsMap = new google.maps.Map(document.getElementById('locationsMap'), {
 				zoom: 4,
@@ -137,6 +140,7 @@ function initLocationsMap() {
 				center: {lat: 39.019184, lng: -2.812500},
 				scrollwheel: false
 			});
+			directionsDisplay.setMap(locationsMap);
 
 			var bounds = new google.maps.LatLngBounds();
 
@@ -147,7 +151,7 @@ function initLocationsMap() {
       if(locs.length > 0){
 				locationsMap.fitBounds(bounds);
 			}
-			calculateAndDisplayRoute();
+			calculateAndDisplayRoute2();
 
 
 			var marker = new google.maps.Marker({
@@ -156,6 +160,7 @@ function initLocationsMap() {
 
 			function placeMarker(location) {
 				marker = new google.maps.Marker({
+					animation: google.maps.Animation.DROP,
 					position: {lat: parseFloat(location.latitude), lng: parseFloat(location.longitude)}, 
 					label: labels[labelIndex++ % labels.length],
 					map: locationsMap
@@ -194,7 +199,29 @@ function initLocationsMap() {
 				}   
 			}
 
-      function calculateAndDisplayRoute() {
+			function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        var waypts = [];
+        locs.forEach(function(location) {
+          waypts.push({
+            lat: parseFloat(location.latitude),
+            lng: parseFloat(location.longitude)
+          });
+        });
+
+        directionsService.route({
+          waypoints: waypts,
+          travelMode: 'DRIVING'
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+            var route = response.routes[0];
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+
+      function calculateAndDisplayRoute2() {
         var waypts = [];
         locs.forEach(function(location) {
           waypts.push({
